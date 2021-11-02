@@ -4,6 +4,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+import 'codemirror/mode/yaml/yaml';
+import 'codemirror/addon/hint/anyword-hint';
+
 if (environment.production) {
   enableProdMode();
 }

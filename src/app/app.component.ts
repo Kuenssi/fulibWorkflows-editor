@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'fulibWorkflows-editor';
+  public content!: string;
+
+  codemirrorOptions = {
+    lineNumbers: true,
+    theme: 'material',
+    mode: 'markdown'
+  }
 }
