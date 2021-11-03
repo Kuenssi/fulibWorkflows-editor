@@ -1,8 +1,29 @@
-<div class="column">
+<div class="container">
   <div class="row">
-    <ngx-codemirror [(ngModel)]="content"
-                    [options]="codemirrorOptions"
-    ></ngx-codemirror>
+    <!-- Codemirror Editor -->
+    <div class="col">
+      <ngx-codemirror [(ngModel)]="content"
+                      [options]="codemirrorOptions"
+      ></ngx-codemirror>
+    </div>
+    <!-- Buttons to generate and download -->
+    <div class="col">
+      <div class="row">
+        <button class="btn btn-primary">Generate HTML</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-success">Download YAML</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-success">Download HTML</button>
+      </div>
+    </div>
+  </div>
+  <div class="row h-100">
+    <!-- Generated Workflow HTML View -->
+    <div class="h-100">
+      <iframe class="w-100 h-100" src="assets/examples/StoreProductShopBoard/StoreProductShopBoardEventStorming.html"
+              title="Testerino Schmesterino"></iframe>
+    </div>
   </div>
 </div>
-

@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public content!: string;
+  public content!: any;
 
   codemirrorOptions = {
     lineNumbers: true,
     theme: 'material',
-    mode: 'markdown'
+    mode: 'yaml'
   }
 }
