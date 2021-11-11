@@ -20,9 +20,16 @@
     </div>
   </div>
   <div class="row h-100">
-    <!-- Generated Workflow HTML View -->
+    <!-- Generated Workflow Board HTML View -->
     <div class="h-100">
-      <iframe class="w-100 h-100" src="assets/examples/StoreProductShopBoard/StoreProductShopBoardEventStorming.html"
+      <iframe *ngIf="workflowBoard" class="w-100 h-100" [src]="workflowBoard"
+              title="Testerino Schmesterino"></iframe>
+    </div>
+  </div>
+  <div class="row h-100">
+    <!-- Generated Workflow Mockup HTML View -->
+    <div class="h-100">
+      <iframe *ngIf="workflowMockup" class="w-100 h-100" [src]="workflowMockup"
               title="Testerino Schmesterino"></iframe>
     </div>
   </div>
