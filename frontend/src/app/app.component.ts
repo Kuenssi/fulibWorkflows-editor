@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {FulibWorkflowsService} from './core/fulibWorkflows.service';
+import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 
 @Component({
   selector: 'app-root',
@@ -42,12 +42,14 @@ export class AppComponent {
 
   private getInitialBoard() {
     this.fulibWorkflowsService.generateWorkflowBoard().then((res) => {
+      console.log(res);
       this.workflowBoard = res;
     });
   }
 
   private getInitialMockup() {
     this.fulibWorkflowsService.generateWorkflowMockup().then((res) => {
+      console.log(res);
       this.workflowMockup = res;
     });
   }

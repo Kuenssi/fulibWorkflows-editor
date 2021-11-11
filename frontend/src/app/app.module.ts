@@ -6,9 +6,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CodemirrorModule} from '@ctrl/ngx-codemirror';
 
 import {AppComponent} from './app.component';
-import {HttpService} from './core/http.service';
 import {AppRoutingModule} from './app-routing.module';
-import {FulibWorkflowsService} from './core/fulibWorkflows.service';
+import {HttpService} from './core/services/http.service';
+import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 
 @NgModule({
   declarations: [
