@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +12,17 @@ export class AppComponent {
     lineNumbers: true,
     theme: 'material',
     mode: 'yaml'
+  }
+
+  constructor() {
+    this.content = '- workflow: Testerino\n' +
+      '\n' +
+      '- event: Start test scenario\n' +
+      '\n' +
+      '- page:\n' +
+      '  - name: First Page\n' +
+      '  - label: First Page\n' +
+      '  - button: Red Button\n' +
+      '  - input: Name\n'
   }
 }
