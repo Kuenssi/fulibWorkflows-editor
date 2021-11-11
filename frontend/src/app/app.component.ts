@@ -15,7 +15,7 @@ export class AppComponent {
   codemirrorOptions = {
     lineNumbers: true,
     theme: 'material',
-    mode: 'yaml'
+    mode: 'yaml',
   }
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService) {
@@ -42,14 +42,12 @@ export class AppComponent {
 
   private getInitialBoard() {
     this.fulibWorkflowsService.generateWorkflowBoard().then((res) => {
-      console.log(res);
       this.workflowBoard = res;
     });
   }
 
   private getInitialMockup() {
     this.fulibWorkflowsService.generateWorkflowMockup().then((res) => {
-      console.log(res);
       this.workflowMockup = res;
     });
   }

@@ -1,38 +1,19 @@
-<div class="container">
-  <div class="row">
-    <!-- Codemirror Editor -->
-    <div class="col">
-      <ngx-codemirror [(ngModel)]="content"
-                      [options]="codemirrorOptions"
-      ></ngx-codemirror>
-    </div>
-    <!-- Buttons to generate and download -->
-    <div class="col">
-      <div class="row">
-        <button class="btn btn-primary">Generate HTML</button>
-      </div>
-      <div class="row">
-        <button class="btn btn-success">Download YAML</button>
-      </div>
-      <div class="row">
-        <button class="btn btn-success">Download HTML</button>
-      </div>
-    </div>
+<div class="container-fluid min-vh-100">
+  <div class="codemirror">
+    <ngx-codemirror [(ngModel)]="content"
+                    [options]="codemirrorOptions">
+    </ngx-codemirror>
   </div>
-  <div class="row h-100">
-    <!-- Generated Workflow Board HTML View -->
-    <div class="h-100">
-      <iframe *ngIf="workflowBoard" src="assets/examples/board.html"
-              width="100%" height="100%"
-              title="Testerino Schmesterino"></iframe>
-    </div>
+  <div class="buttons">
+    <button class="btn btn-primary btn-sm">Generate</button>
+    <button class="btn btn-secondary btn-sm">Download</button>
   </div>
-  <div class="row h-100">
-    <!-- Generated Workflow Mockup HTML View -->
-    <div class="h-100">
-      <iframe *ngIf="workflowMockup" src="assets/examples/mockup.html"
-              width="100%" height="100%"
-              title="Testerino Schmesterino"></iframe>
-    </div>
+  <div class="board">
+    <iframe [srcdoc]="workflowBoard"
+            height="100%" width="100%"></iframe>
+  </div>
+  <div class="mockup">
+    <iframe [srcdoc]="workflowMockup"
+            height="100%" width="100%"></iframe>
   </div>
 </div>

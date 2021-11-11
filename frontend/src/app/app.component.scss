@@ -1,0 +1,29 @@
+.container-fluid {
+  display: grid;
+  grid-template-columns: 30% 5% 65%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "codemirror buttons board"
+    "codemirror buttons mockup";
+  gap: 1% 1%;
+}
+
+.codemirror {
+  grid-area: codemirror;
+}
+
+.CodeMirror {
+  height: max-content;
+}
+
+.buttons {
+  grid-area: buttons;
+}
+
+.board {
+  grid-area: board;
+}
+
+.mockup {
+  grid-area: mockup;
+}
