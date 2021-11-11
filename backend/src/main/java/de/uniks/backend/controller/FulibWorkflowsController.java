@@ -1,15 +1,16 @@
 package de.uniks.backend.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @CrossOrigin()
 public class FulibWorkflowsController {
 
-    @RequestMapping("/generateWorkflowBoard")
+    @GetMapping(value = "/generateWorkflowBoard", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     String generateWorkflowBoard() {
         return """
@@ -134,7 +135,7 @@ public class FulibWorkflowsController {
                 """;
     }
 
-    @RequestMapping("/generateWorkflowMockup")
+    @GetMapping(value = "/generateWorkflowMockup", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     String generateWorkflowMockup() {
         return """
