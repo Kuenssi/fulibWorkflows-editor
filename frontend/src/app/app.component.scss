@@ -1,7 +1,7 @@
 .container-fluid {
   display: grid;
-  grid-template-columns: 30% 5% 65%;
-  grid-template-rows: 50% 50%;
+  grid-template-columns: 30% 10% 60%;
+  grid-template-rows: 30% 70%;
   grid-template-areas:
     "codemirror buttons board"
     "codemirror buttons mockup";
@@ -10,6 +10,7 @@
 
 .codemirror {
   grid-area: codemirror;
+  border: 1px solid black;
 }
 
 .buttons {
@@ -18,8 +19,10 @@
 
 .board {
   grid-area: board;
+  border: 1px solid black;
 }
 
 .mockup {
   grid-area: mockup;
+  border: 1px solid black;
 }
