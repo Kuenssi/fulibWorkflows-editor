@@ -9,7 +9,10 @@
       <button class="btn btn-primary btn-sm">Generate</button>
     </div>
     <div class="row p-1">
-      <button class="btn btn-secondary btn-sm">Download</button>
+      <button class="btn btn-success btn-sm"
+              (click)="downloadModal.open()">
+        Download
+      </button>
     </div>
   </div>
   <div class="board">
@@ -21,3 +24,5 @@
             height="100%" width="100%"></iframe>
   </div>
 </div>
+
+<app-download-modal #downloadModal></app-download-modal>

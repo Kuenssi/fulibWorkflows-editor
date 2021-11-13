@@ -9,10 +9,12 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpService} from './core/services/http.service';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
+import { DownloadModalComponent } from './components/download-modal/download-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DownloadModalComponent
   ],
   imports: [
     FormsModule,
