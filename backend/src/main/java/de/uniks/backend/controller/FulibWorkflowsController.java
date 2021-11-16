@@ -1,6 +1,8 @@
 package de.uniks.backend.controller;
 
 import org.fulib.workflows.html.HtmlGenerator3;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +18,8 @@ import java.nio.file.Path;
 @Controller
 @CrossOrigin()
 public class FulibWorkflowsController {
+
+    Logger logger = LoggerFactory.getLogger(FulibWorkflowsController.class);
 
     @PostMapping(path = "/generate", consumes = MediaType.ALL_VALUE, produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
@@ -37,6 +41,8 @@ public class FulibWorkflowsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        logger.info(result);
 
         return result;
     }
