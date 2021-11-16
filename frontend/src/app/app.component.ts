@@ -8,13 +8,16 @@ import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  //Codemirror
   public content!: any;
-
-  codemirrorOptions = {
+  public codemirrorOptions = {
     lineNumbers: true,
     theme: 'material',
     mode: 'yaml',
   }
+
+  // HTML
+  public boardHtmlString!: string;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService) {
     this.initInformation();
@@ -23,7 +26,7 @@ export class AppComponent {
   generate() {
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer) => {
-        console.log(answer);
+        this.boardHtmlString = answer;
       }
     );
   }
