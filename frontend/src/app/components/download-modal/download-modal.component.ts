@@ -14,7 +14,7 @@ export class DownloadModalComponent {
 
   public open() {
     this.modalService.open(this.download, {centered: true}).result.then(() => {
-
+      // TODO
     });
   }
 }

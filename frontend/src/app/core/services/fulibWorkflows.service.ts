@@ -11,6 +11,6 @@ export class FulibWorkflowsService {
   }
 
   public generate(data: any): Observable<any> {
-    return this.httpService.post(environment.backendUrl + environment.generate, data);
+    return this.httpService.post(environment.backendUrl + environment.generate, JSON.stringify(data));
   }
 }
