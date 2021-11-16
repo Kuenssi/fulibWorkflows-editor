@@ -39,10 +39,8 @@ public class FulibWorkflowsController {
             result = Files.readString(Path.of("./tmp/Testerino/TesterinoEventStorming.html"));
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
-
-        logger.info(result);
 
         return result;
     }
