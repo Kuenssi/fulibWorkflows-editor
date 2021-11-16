@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 
+import {Observable} from 'rxjs';
 import {HttpService} from './http.service';
 import {environment} from '../../../environments/environment';
 
@@ -9,11 +10,7 @@ export class FulibWorkflowsService {
   constructor(private httpService: HttpService) {
   }
 
-  public async generateWorkflowBoard(): Promise<any> {
-    return this.httpService.get(environment.backendUrl + environment.board);
-  }
-
-  public async generateWorkflowMockup(): Promise<any> {
-    return this.httpService.get(environment.backendUrl + environment.mockup);
+  public generate(data: any): Observable<any> {
+    return this.httpService.post(environment.backendUrl + environment.generate, data);
   }
 }

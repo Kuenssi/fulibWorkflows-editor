@@ -2,6 +2,5 @@ export const environment = {
   production: true,
   backendUrl: 'http://localhost:8080/', // TODO
 
-  board: 'generateWorkflowBoard',
-  mockup: 'generateWorkflowMockup'
+  generate: 'generate',
 };

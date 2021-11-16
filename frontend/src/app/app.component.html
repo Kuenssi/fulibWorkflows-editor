@@ -6,7 +6,8 @@
   </div>
   <div class="buttons">
     <div class="row p-1">
-      <button class="btn btn-primary btn-sm">Generate</button>
+      <button class="btn btn-primary btn-sm"
+              (click)="generate()">Generate</button>
     </div>
     <div class="row p-1">
       <button class="btn btn-success btn-sm"
@@ -16,11 +17,11 @@
     </div>
   </div>
   <div class="board">
-    <iframe title="Boards" [srcdoc]="workflowBoard"
+    <iframe title="Boards" src="assets/examples/board.html"
             height="100%" width="100%"></iframe>
   </div>
   <div class="mockup">
-    <iframe title="Mockups" [srcdoc]="workflowMockup"
+    <iframe title="Mockups" src="assets/examples/mockup.html"
             height="100%" width="100%"></iframe>
   </div>
 </div>

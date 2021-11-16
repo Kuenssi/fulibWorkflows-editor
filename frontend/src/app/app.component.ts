@@ -9,8 +9,6 @@ import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 })
 export class AppComponent {
   public content!: any;
-  public workflowBoard!: string;
-  public workflowMockup!: string;
 
   codemirrorOptions = {
     lineNumbers: true,
@@ -22,10 +20,16 @@ export class AppComponent {
     this.initInformation();
   }
 
+  generate() {
+    this.fulibWorkflowsService.generate(this.content).subscribe(
+      (answer) => {
+        console.log(answer);
+      }
+    );
+  }
+
   private initInformation() {
     this.setInitialCodeMirrorContent();
-    this.getInitialBoard();
-    this.getInitialMockup();
   }
 
   private setInitialCodeMirrorContent() {
@@ -38,17 +42,5 @@ export class AppComponent {
       '  - label: First Page\n' +
       '  - button: Red Button\n' +
       '  - input: Name\n';
-  }
-
-  private getInitialBoard() {
-    this.fulibWorkflowsService.generateWorkflowBoard().then((res) => {
-      this.workflowBoard = res;
-    });
-  }
-
-  private getInitialMockup() {
-    this.fulibWorkflowsService.generateWorkflowMockup().then((res) => {
-      this.workflowMockup = res;
-    });
   }
 }
