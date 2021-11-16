@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="board">
-    <iframe title="Boards" [srcdoc]="boardHtmlString"
+    <iframe *ngIf="boardHtmlString" title="Boards" [srcdoc]="boardHtmlString | safe"
             height="100%" width="100%"></iframe>
   </div>
   <div class="mockup">
