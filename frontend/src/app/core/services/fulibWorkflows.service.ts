@@ -10,7 +10,7 @@ export class FulibWorkflowsService {
   constructor(private httpService: HttpService) {
   }
 
-  public generate(data: any): Observable<any> {
-    return this.httpService.post(environment.backendUrl + environment.generate, JSON.stringify(data));
+  public generate(data: string): Observable<any> {
+    return this.httpService.post(environment.backendUrl + environment.generate, data);
   }
 }
