@@ -17,7 +17,7 @@ export class AppComponent {
     extraKeys: {
       'Ctrl-Space': 'autocomplete',
       'Ctrl-S': () => this.generate(), // TODO -> Only does this after another action on the codemirror
-    }
+    },
   };
 
   // HTML
