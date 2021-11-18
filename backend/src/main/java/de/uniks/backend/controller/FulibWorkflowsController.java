@@ -34,7 +34,9 @@ public class FulibWorkflowsController {
 
             htmlGenerator3.generateViewFiles(tempFile.getPath(), "Testerino"); // TODO tmp file for now -> Write new method for direct data input in fulibWorkflows later
 
-            tempFile.deleteOnExit();
+            if (!tempFile.delete()) {
+                logger.error("Could not delete tempFile");
+            }
 
             result = Files.readString(Path.of("./tmp/Testerino/TesterinoEventStorming.html"));
 
