@@ -41,9 +41,9 @@ export class AppComponent {
       '- event: Start test scenario\n' +
       '\n' +
       '- page:\n' +
-      '  - name: First Page\n' +
-      '  - label: First Page\n' +
-      '  - button: Red Button\n' +
-      '  - input: Name\n';
+      '    - name: First Page\n' +
+      '    - label: First Page\n' +
+      '    - button: Red Button\n' +
+      '    - input: Name\n';
   }
 }
