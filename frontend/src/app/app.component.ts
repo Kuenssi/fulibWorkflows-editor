@@ -14,7 +14,10 @@ export class AppComponent {
     lineNumbers: true,
     theme: 'material',
     mode: 'yaml',
-  }
+    extraKeys: {
+      'Ctrl-S': () => this.generate(), // TODO -> Only does this after another action on the codemirror
+    }
+  };
 
   // HTML
   public boardHtmlString!: string;
