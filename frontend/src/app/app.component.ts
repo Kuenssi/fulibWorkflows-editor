@@ -18,6 +18,7 @@ export class AppComponent {
       'Ctrl-Space': 'autocomplete',
       'Ctrl-S': () => this.generate(), // TODO -> Only does this after another action on the codemirror
     },
+    autofocus: true,
   };
 
   // HTML
