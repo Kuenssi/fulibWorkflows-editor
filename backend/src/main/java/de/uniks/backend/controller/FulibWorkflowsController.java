@@ -51,6 +51,7 @@ public class FulibWorkflowsController {
 
     private Map<Integer, String> getPagesResult(String yamlData) {
         Map<Integer, String> result = new HashMap<>();
+        // TODO Not yet possible to get Pages via fulibWorkflows
         result.put(1, "Page 01");
         result.put(2, "Page 02");
         result.put(3, "Page 03");
