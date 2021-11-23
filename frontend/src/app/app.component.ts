@@ -30,6 +30,10 @@ export class AppComponent {
     this.initInformation();
   }
 
+  //
+  // Public
+  //
+
   generate() {
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer: GenerateResult) => {
@@ -58,16 +62,44 @@ export class AppComponent {
     return currentPage;
   }
 
-  private initInformation() {
-    this.setInitialCodeMirrorContent();
-  }
-
   pagesReady(): boolean {
     if (!this.generateResult || !this.generateResult.pages) {
       return false;
     }
 
     return this.generateResult.pages.size > 0;
+  }
+
+  nextPage() {
+    if (!this.generateResult) {
+      return;
+    }
+
+    if (this.currentPageIndex === this.generateResult.numberOfPages) {
+      return;
+    }
+
+    this.currentPageIndex += 1;
+  }
+
+  previousPage() {
+    if (!this.generateResult) {
+      return;
+    }
+
+    if (this.currentPageIndex === 1) {
+      return;
+    }
+
+    this.currentPageIndex -= 1;
+  }
+
+  //
+  // Private
+  //
+
+  private initInformation() {
+    this.setInitialCodeMirrorContent();
   }
 
   private setInitialCodeMirrorContent() {
@@ -85,7 +117,7 @@ export class AppComponent {
   private createMapFromAnswer(pages: any, numOfPages: number): Map<number, string> {
     const result = new Map<number, string>();
 
-    for (let i = 1; i < numOfPages; i++) {
+    for (let i = 1; i <= numOfPages; i++) {
       result.set(i, pages[i]);
     }
 

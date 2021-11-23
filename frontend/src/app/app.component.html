@@ -16,6 +16,18 @@
         Download
       </button>
     </div>
+    <div class="row p-1">
+      <button class="btn btn-secondary btn-sm"
+              (click)="previousPage()">
+        <i class="bi bi-arrow-left"></i>
+      </button>
+    </div>
+    <div class="row p-1">
+      <button class="btn btn-secondary btn-sm"
+              (click)="nextPage()">
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
   </div>
   <div class="board">
     <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
