@@ -10,7 +10,7 @@ export class HttpService {
   }
 
   post(url: string, data: any): Observable<Object> {
-    const headers: HttpHeaders = new HttpHeaders({'Accept': 'text/html'});
-    return this.httpClient.post(url, data, {headers: headers, responseType: 'text'});
+    const headers: HttpHeaders = new HttpHeaders();
+    return this.httpClient.post(url, data, {headers: headers});
   }
 }

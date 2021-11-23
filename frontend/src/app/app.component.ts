@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
+import {GenerateResult} from './core/model/GenerateResult';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,9 @@ export class AppComponent {
     autofocus: true,
   };
 
-  // HTML
-  public boardHtmlString!: string;
+  public generateResult!: GenerateResult;
+
+  private currentPageIndex = 1;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService) {
     this.initInformation();
@@ -31,9 +33,23 @@ export class AppComponent {
   generate() {
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer) => {
-        this.boardHtmlString = answer;
+        this.generateResult = answer;
       }
     );
+  }
+
+  getCurrentPage(): string {
+    if (!this.generateResult || !this.generateResult.pages) {
+      return ''
+    }
+
+    const currentPage = this.generateResult.pages.get(this.currentPageIndex);
+
+    if (!currentPage) {
+      return '';
+    }
+
+    return currentPage;
   }
 
   private initInformation() {

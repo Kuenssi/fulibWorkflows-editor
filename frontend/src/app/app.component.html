@@ -18,11 +18,11 @@
     </div>
   </div>
   <div class="board">
-    <iframe *ngIf="boardHtmlString" title="Boards" [srcdoc]="boardHtmlString | safe"
+    <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
             height="100%" width="100%"></iframe>
   </div>
   <div class="mockup">
-    <iframe title="Mockups" src="assets/examples/mockup.html"
+    <iframe *ngIf="generateResult" title="Mockups" [srcdoc]="getCurrentPage() | safe"
             height="100%" width="100%"></iframe>
   </div>
 </div>
