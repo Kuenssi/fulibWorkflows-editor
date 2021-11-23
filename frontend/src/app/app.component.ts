@@ -32,8 +32,14 @@ export class AppComponent {
 
   generate() {
     this.fulibWorkflowsService.generate(this.content).subscribe(
-      (answer) => {
-        this.generateResult = answer;
+      (answer: GenerateResult) => {
+        const pages = this.createMapFromAnswer(answer.pages, answer.numberOfPages);
+
+        this.generateResult = {
+          board: answer.board,
+          pages: pages,
+          numberOfPages: answer.numberOfPages
+        };
       }
     );
   }
@@ -56,6 +62,14 @@ export class AppComponent {
     this.setInitialCodeMirrorContent();
   }
 
+  pagesReady(): boolean {
+    if (!this.generateResult || !this.generateResult.pages) {
+      return false;
+    }
+
+    return this.generateResult.pages.size > 0;
+  }
+
   private setInitialCodeMirrorContent() {
     this.content = '- workflow: Testerino\n' +
       '\n' +
@@ -66,5 +80,15 @@ export class AppComponent {
       '    - label: First Page\n' +
       '    - button: Red Button\n' +
       '    - input: Name\n';
+  }
+
+  private createMapFromAnswer(pages: any, numOfPages: number): Map<number, string> {
+    const result = new Map<number, string>();
+
+    for (let i = 1; i < numOfPages; i++) {
+      result.set(i, pages[i]);
+    }
+
+    return result;
   }
 }
