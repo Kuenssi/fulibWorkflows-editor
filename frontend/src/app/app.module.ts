@@ -6,11 +6,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CodemirrorModule} from '@ctrl/ngx-codemirror';
 
 import {AppComponent} from './app.component';
+import {SafePipe} from './core/pipes/safe.pipe';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpService} from './core/services/http.service';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
-import { DownloadModalComponent } from './components/download-modal/download-modal.component';
-import { SafePipe } from './core/pipes/safe.pipe';
+import {DownloadModalComponent} from './components/download-modal/download-modal.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SafePipe } from './core/pipes/safe.pipe';
     HttpClientModule,
     AppRoutingModule,
     CodemirrorModule,
+    NgbModule,
   ],
   providers: [
     HttpService,

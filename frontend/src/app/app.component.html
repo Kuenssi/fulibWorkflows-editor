@@ -16,16 +16,31 @@
         Download
       </button>
     </div>
+
+    <div class="divider"></div>
+
     <div class="row p-1">
       <button class="btn btn-secondary btn-sm"
               (click)="previousPage()">
-        <i class="bi bi-arrow-left"></i>
+        <span>Previous Page</span>
       </button>
     </div>
     <div class="row p-1">
       <button class="btn btn-secondary btn-sm"
               (click)="nextPage()">
-        <i class="bi bi-arrow-right"></i>
+        <span>Next Page</span>
+      </button>
+    </div>
+    <div class="row p-1">
+      <button class="btn btn-secondary btn-sm"
+              (click)="setFirstPage()">
+        <span>First Page</span>
+      </button>
+    </div>
+    <div class="row p-1">
+      <button class="btn btn-secondary btn-sm"
+              (click)="setLastPage()">
+        <span>Last Page</span>
       </button>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
-import {GenerateResult} from './core/model/GenerateResult';
+import {createMapFromAnswer, GenerateResult} from './core/model/GenerateResult';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +37,7 @@ export class AppComponent {
   generate() {
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer: GenerateResult) => {
-        const pages = this.createMapFromAnswer(answer.pages, answer.numberOfPages);
+        const pages = createMapFromAnswer(answer.pages, answer.numberOfPages);
 
         this.generateResult = {
           board: answer.board,
@@ -94,6 +94,14 @@ export class AppComponent {
     this.currentPageIndex -= 1;
   }
 
+  setFirstPage() {
+    this.currentPageIndex = 1;
+  }
+
+  setLastPage() {
+    this.currentPageIndex = this.generateResult.numberOfPages;
+  }
+
   //
   // Private
   //
@@ -112,15 +120,5 @@ export class AppComponent {
       '    - label: First Page\n' +
       '    - button: Red Button\n' +
       '    - input: Name\n';
-  }
-
-  private createMapFromAnswer(pages: any, numOfPages: number): Map<number, string> {
-    const result = new Map<number, string>();
-
-    for (let i = 1; i <= numOfPages; i++) {
-      result.set(i, pages[i]);
-    }
-
-    return result;
   }
 }
