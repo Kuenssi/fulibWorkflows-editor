@@ -45,4 +45,8 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+  download(option: string) {
+    console.log(option);
+  }
 }

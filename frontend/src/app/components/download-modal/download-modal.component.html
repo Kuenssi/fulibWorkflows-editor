@@ -1,5 +1,39 @@
-<ng-template #download>
-  <div>
-    Hello there....
+<ng-template #download let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Configure and Download</h4>
+  </div>
+
+  <div class="modal-body">
+    <div class="col">
+      <div class="row p-1">
+        <label for="downloadOptions">Download Options</label>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="downloadOptions" ngbDropdownToggle>Options</button>
+          <div ngbDropdownMenu aria-labelledby="downloadOptions">
+            <ng-container *ngFor="let option of options">
+              <button ngbDropdownItem (click)="selectedDownloadOption = option">{{option}}</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <span>Selected Option: {{selectedDownloadOption || '-'}}</span>
+      </div>
+    </div>
+
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning"
+            (click)="selectedDownloadOption = undefined; modal.close()">Dismiss
+    </button>
+    <button type="button" class="btn btn-success" (click)="modal.close()">Download</button>
   </div>
 </ng-template>

@@ -5,14 +5,15 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {CodemirrorModule} from '@ctrl/ngx-codemirror';
 
+import {NgbDropdown, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {AppComponent} from './app.component';
 import {SafePipe} from './core/pipes/safe.pipe';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpService} from './core/services/http.service';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
+import {MockupViewerComponent} from './components/mockup-viewer/mockup-viewer.component';
 import {DownloadModalComponent} from './components/download-modal/download-modal.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { MockupViewerComponent } from './components/mockup-viewer/mockup-viewer.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MockupViewerComponent } from './components/mockup-viewer/mockup-viewer.
   providers: [
     HttpService,
     FulibWorkflowsService,
+    NgbDropdown
   ],
   bootstrap: [AppComponent]
 })
