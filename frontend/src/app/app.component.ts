@@ -1,14 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {createMapFromAnswer, GenerateResult} from './core/model/GenerateResult';
+import {initialExample} from './core/examples/initial.example';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   //Codemirror
   public content!: any;
   public codemirrorOptions = {
@@ -24,15 +25,12 @@ export class AppComponent {
 
   public generateResult!: GenerateResult;
 
-  private currentPageIndex = 1;
-
   constructor(private fulibWorkflowsService: FulibWorkflowsService) {
-    this.initInformation();
   }
 
-  //
-  // Public
-  //
+  ngOnInit() {
+    this.content = initialExample;
+  }
 
   generate() {
     this.fulibWorkflowsService.generate(this.content).subscribe(
@@ -46,79 +44,5 @@ export class AppComponent {
         };
       }
     );
-  }
-
-  getCurrentPage(): string {
-    if (!this.generateResult || !this.generateResult.pages) {
-      return ''
-    }
-
-    const currentPage = this.generateResult.pages.get(this.currentPageIndex);
-
-    if (!currentPage) {
-      return '';
-    }
-
-    return currentPage;
-  }
-
-  pagesReady(): boolean {
-    if (!this.generateResult || !this.generateResult.pages) {
-      return false;
-    }
-
-    return this.generateResult.pages.size > 0;
-  }
-
-  nextPage() {
-    if (!this.generateResult) {
-      return;
-    }
-
-    if (this.currentPageIndex === this.generateResult.numberOfPages) {
-      return;
-    }
-
-    this.currentPageIndex += 1;
-  }
-
-  previousPage() {
-    if (!this.generateResult) {
-      return;
-    }
-
-    if (this.currentPageIndex === 1) {
-      return;
-    }
-
-    this.currentPageIndex -= 1;
-  }
-
-  setFirstPage() {
-    this.currentPageIndex = 1;
-  }
-
-  setLastPage() {
-    this.currentPageIndex = this.generateResult.numberOfPages;
-  }
-
-  //
-  // Private
-  //
-
-  private initInformation() {
-    this.setInitialCodeMirrorContent();
-  }
-
-  private setInitialCodeMirrorContent() {
-    this.content = '- workflow: Testerino\n' +
-      '\n' +
-      '- event: Start test scenario\n' +
-      '\n' +
-      '- page:\n' +
-      '    - name: First Page\n' +
-      '    - label: First Page\n' +
-      '    - button: Red Button\n' +
-      '    - input: Name\n';
   }
 }

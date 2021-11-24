@@ -12,12 +12,14 @@ import {HttpService} from './core/services/http.service';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {DownloadModalComponent} from './components/download-modal/download-modal.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MockupViewerComponent } from './components/mockup-viewer/mockup-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DownloadModalComponent,
-    SafePipe
+    SafePipe,
+    MockupViewerComponent
   ],
   imports: [
     FormsModule,

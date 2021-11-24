@@ -1,0 +1,26 @@
+<div class="mockup-viewer vh-100">
+  <div class="button-panel">
+    <div class="d-grid gap-2 d-md-block">
+      <button type="button" class="btn btn-secondary btn-sm"
+              (click)="previousPage()">
+        <span>Previous Page</span>
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm"
+              (click)="nextPage()">
+        <span>Next Page</span>
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm"
+              (click)="setFirstPage()">
+        <span>First Page</span>
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm"
+              (click)="setLastPage()">
+        <span>Last Page</span>
+      </button>
+    </div>
+  </div>
+  <div class="mockup-view">
+    <iframe *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
+            height="100%" width="100%"></iframe>
+  </div>
+</div>

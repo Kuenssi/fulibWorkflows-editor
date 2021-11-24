@@ -16,41 +16,13 @@
         Download
       </button>
     </div>
-
-    <div class="divider"></div>
-
-    <div class="row p-1">
-      <button class="btn btn-secondary btn-sm"
-              (click)="previousPage()">
-        <span>Previous Page</span>
-      </button>
-    </div>
-    <div class="row p-1">
-      <button class="btn btn-secondary btn-sm"
-              (click)="nextPage()">
-        <span>Next Page</span>
-      </button>
-    </div>
-    <div class="row p-1">
-      <button class="btn btn-secondary btn-sm"
-              (click)="setFirstPage()">
-        <span>First Page</span>
-      </button>
-    </div>
-    <div class="row p-1">
-      <button class="btn btn-secondary btn-sm"
-              (click)="setLastPage()">
-        <span>Last Page</span>
-      </button>
-    </div>
   </div>
   <div class="board">
     <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
             height="100%" width="100%"></iframe>
   </div>
   <div class="mockup">
-    <iframe *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
-            height="100%" width="100%"></iframe>
+    <app-mockup-viewer [generateResult]="generateResult"></app-mockup-viewer>
   </div>
 </div>
 
