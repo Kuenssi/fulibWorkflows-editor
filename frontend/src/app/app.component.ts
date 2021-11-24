@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
+import {initialExample} from './core/examples/initial.example';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {createMapFromAnswer, GenerateResult} from './core/model/GenerateResult';
-import {initialExample} from './core/examples/initial.example';
 
 @Component({
   selector: 'app-root',
@@ -44,9 +44,5 @@ export class AppComponent implements OnInit {
         };
       }
     );
-  }
-
-  download(option: string) {
-    console.log(option);
   }
 }
