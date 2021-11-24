@@ -12,6 +12,7 @@ export class DownloadModalComponent implements OnInit {
   @ViewChild('download') private downloadModal!: NgbActiveModal;
 
   @Input() public data!: GenerateResult;
+  @Input() public cmContent!: string;
 
   public selectedDownloadOption!: string | undefined;
   public options: string[] = ['Only Board', 'Only Mockups', 'Only YAML', 'Everything'];
@@ -41,7 +42,7 @@ export class DownloadModalComponent implements OnInit {
         // TODO Must be a zip due to multiple files
         break;
       case 'Only YAML':
-        FileExportHelper.stringToFileDownload(this.data.board, 'board.html', "html");
+        FileExportHelper.stringToFileDownload(this.cmContent, 'workflow.es.yaml', "yaml");
         break;
       case 'Everything':
         // TODO Must be a zip due to multiple files
