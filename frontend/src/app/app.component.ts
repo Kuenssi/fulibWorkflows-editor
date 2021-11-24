@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 
 import {initialExample} from './core/examples/initial.example';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
@@ -12,20 +12,24 @@ import {createMapFromAnswer, GenerateResult} from './core/model/GenerateResult';
 export class AppComponent implements OnInit {
   //Codemirror
   public content!: any;
-  public codemirrorOptions = {
-    lineNumbers: true,
-    theme: 'material',
-    mode: 'yaml',
-    extraKeys: {
-      'Ctrl-Space': 'autocomplete',
-      'Ctrl-S': () => this.generate(), // TODO -> Only does this after another action on the codemirror
-    },
-    autofocus: true,
-  };
+  public codemirrorOptions: any;
 
   public generateResult!: GenerateResult;
 
-  constructor(private fulibWorkflowsService: FulibWorkflowsService) {
+  constructor(private fulibWorkflowsService: FulibWorkflowsService,
+              private zone: NgZone) {
+    const generateHandler = () => this.zone.run(() => this.generate());
+
+    this.codemirrorOptions = {
+      lineNumbers: true,
+      theme: 'material',
+      mode: 'yaml',
+      extraKeys: {
+        'Ctrl-Space': 'autocomplete',
+        'Ctrl-S': generateHandler,
+      },
+      autofocus: true,
+    };
   }
 
   ngOnInit() {
