@@ -1,7 +1,8 @@
-import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
 import {GenerateResult} from '../../core/model/GenerateResult';
-import {FILE_TYPES_MIME_MAP, FileExportHelper} from '../../core/file-export.helper';
+import {FileExportHelper} from '../../core/file-export.helper';
 
 @Component({
   selector: 'app-download-modal',
