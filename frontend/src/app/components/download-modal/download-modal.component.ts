@@ -1,5 +1,7 @@
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {GenerateResult} from '../../core/model/GenerateResult';
+import {FILE_TYPES_MIME_MAP, FileExportHelper} from '../../core/file-export.helper';
 
 @Component({
   selector: 'app-download-modal',
@@ -8,6 +10,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class DownloadModalComponent implements OnInit {
   @ViewChild('download') private downloadModal!: NgbActiveModal;
+
+  @Input() public data!: GenerateResult;
 
   public selectedDownloadOption!: string | undefined;
   public options: string[] = ['Only Board', 'Only Mockups', 'Only YAML', 'Everything'];
@@ -31,12 +35,17 @@ export class DownloadModalComponent implements OnInit {
     // TODO -> need to discuss wanted functionality with albert
     switch (this.selectedDownloadOption) {
       case 'Only Board':
+        FileExportHelper.stringToFileDownload(this.data.board, 'board.html', "html");
         break;
       case 'Only Mockups':
+        // TODO Must be a zip due to multiple files
         break;
       case 'Only YAML':
+        FileExportHelper.stringToFileDownload(this.data.board, 'board.html', "html");
         break;
       case 'Everything':
+        // TODO Must be a zip due to multiple files
+        // TODO With or without a gradle project?
         break;
       default:
         break;

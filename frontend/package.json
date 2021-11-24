@@ -23,6 +23,7 @@
     "bootstrap": "^4.6.1",
     "bootstrap-icons": "^1.7.1",
     "codemirror": "^5.64.0",
+    "file-saver": "^2.0.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -31,6 +32,7 @@
     "@angular-devkit/build-angular": "^12.2.13",
     "@angular/cli": "^12.2.13",
     "@angular/compiler-cli": "^12.2.13",
+    "@types/file-saver": "^2.0.4",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.20.37",
     "jasmine-core": "~3.8.0",
