@@ -2,7 +2,8 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 import {GenerateResult} from '../../core/model/GenerateResult';
-import {FileExportHelper} from '../../core/file-export.helper';
+import {FileExportHelper, MIME_TYPES} from '../../core/file-export.helper';
+import {FulibWorkflowsService} from '../../core/services/fulibWorkflows.service';
 
 @Component({
   selector: 'app-download-modal',
@@ -18,7 +19,8 @@ export class DownloadModalComponent implements OnInit {
   public selectedDownloadOption!: string | undefined;
   public options: string[] = ['Only Board', 'Only Mockups', 'Only YAML', 'Everything'];
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,
+              private fulibWorkflowsService: FulibWorkflowsService) {
   }
 
   ngOnInit() {
@@ -37,22 +39,21 @@ export class DownloadModalComponent implements OnInit {
     // TODO -> need to discuss wanted functionality with albert
     switch (this.selectedDownloadOption) {
       case 'Only Board':
-        FileExportHelper.stringToFileDownload(this.data.board, 'board.html', "html");
+        FileExportHelper.stringToFileDownload(this.data.board, 'board.html', MIME_TYPES.html);
         break;
       case 'Only Mockups':
-        // TODO Must be a zip due to multiple files
+        this.fulibWorkflowsService.downloadZip(this.cmContent, 'mockups.zip');
         break;
       case 'Only YAML':
-        FileExportHelper.stringToFileDownload(this.cmContent, 'workflow.es.yaml', "yaml");
+        FileExportHelper.stringToFileDownload(this.cmContent, 'workflow.es.yaml', MIME_TYPES.html);
         break;
       case 'Everything':
-        // TODO Must be a zip due to multiple files
         // TODO With or without a gradle project?
+        this.fulibWorkflowsService.downloadZip(this.cmContent, 'export.zip');
         break;
       default:
         break;
     }
-
     this.modalService.dismissAll();
   }
 }
