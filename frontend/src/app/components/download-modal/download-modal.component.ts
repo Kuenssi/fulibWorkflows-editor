@@ -39,7 +39,9 @@ export class DownloadModalComponent implements OnInit {
     // TODO -> need to discuss wanted functionality with albert
     switch (this.selectedDownloadOption) {
       case 'Only Board':
-        FileExportHelper.stringToFileDownload(this.data.board, 'board.html', MIME_TYPES.html);
+        if (this.data.board) {
+          FileExportHelper.stringToFileDownload(this.data.board, 'board.html', MIME_TYPES.html);
+        }
         break;
       case 'Only Mockups':
         this.fulibWorkflowsService.downloadZip(this.cmContent, 'mockups.zip');

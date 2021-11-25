@@ -8,7 +8,7 @@ export enum MIME_TYPES {
 
 export class FileExportHelper {
   static resToFileDownload(res: any, fileName: string, fileType: string) {
-    const blob = new Blob([res.body], {type: fileType});
+    const blob = new Blob([res], {type: fileType});
     const file = new File([blob], fileName, {type: fileType});
     saveAs(file);
   }
