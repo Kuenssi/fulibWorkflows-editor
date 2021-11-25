@@ -5,29 +5,23 @@
 
   <div class="modal-body">
     <div class="col">
-      <div class="row p-1">
-        <label for="downloadOptions">Download Options</label>
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="downloadOptions" ngbDropdownToggle>Options</button>
-          <div ngbDropdownMenu aria-labelledby="downloadOptions">
-            <ng-container *ngFor="let option of options">
-              <button ngbDropdownItem (click)="selectedDownloadOption = option">{{option}}</button>
-            </ng-container>
-          </div>
-        </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="allCheck" [(ngModel)]="exportAll">
+        <label class="form-check-label" for="allCheck">Everything</label>
       </div>
-      <div class="row">
-        <span>Selected Option: {{selectedDownloadOption || '-'}}</span>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="yamlCheck" [(ngModel)]="exportYaml">
+        <label class="form-check-label" for="yamlCheck">YAML (Codemirror Content)</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="boardCheck" [(ngModel)]="exportBoard">
+        <label class="form-check-label" for="boardCheck">Check me out</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="pagesCheck" [(ngModel)]="exportPages">
+        <label class="form-check-label" for="pagesCheck">Check me out</label>
       </div>
     </div>
-
-    <form>
-      <div class="form-group">
-        <div class="input-group">
-
-        </div>
-      </div>
-    </form>
   </div>
 
   <div class="modal-footer">

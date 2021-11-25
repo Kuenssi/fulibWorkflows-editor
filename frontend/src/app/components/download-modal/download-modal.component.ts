@@ -2,8 +2,8 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 import {GenerateResult} from '../../core/model/GenerateResult';
-import {FileExportHelper, MIME_TYPES} from '../../core/file-export.helper';
 import {FulibWorkflowsService} from '../../core/services/fulibWorkflows.service';
+import {FileExportHelper, MIME_TYPES} from '../../core/file-export.helper';
 
 @Component({
   selector: 'app-download-modal',
@@ -17,7 +17,11 @@ export class DownloadModalComponent implements OnInit {
   @Input() public cmContent!: string;
 
   public selectedDownloadOption!: string | undefined;
-  public options: string[] = ['Only Board', 'Only Mockups', 'Only YAML', 'Everything'];
+
+  public exportAll = false;
+  public exportYaml = false;
+  public exportBoard = false;
+  public exportPages = false;
 
   constructor(private modalService: NgbModal,
               private fulibWorkflowsService: FulibWorkflowsService) {
