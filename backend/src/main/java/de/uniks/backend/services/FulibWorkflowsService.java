@@ -49,9 +49,12 @@ public class FulibWorkflowsService {
             // Board file
             createZipEntry(zipOutputStream, "board.html", generateResult.getBoard());
 
-            // Page files
+            // Mockup Directory
+            zipOutputStream.putNextEntry(new ZipEntry("mockups/"));
+
+            // Mockup files
             for (int i = 1; i <= generateResult.getNumberOfPages(); i++) {
-                String fileName = i + "_mockup.html";
+                String fileName = "mockups/" + i + "_mockup.html";
                 createZipEntry(zipOutputStream, fileName, generateResult.getPages().get(i));
             }
 
