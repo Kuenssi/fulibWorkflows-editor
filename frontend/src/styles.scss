@@ -6,3 +6,7 @@
 @import '~codemirror/lib/codemirror';
 @import '~codemirror/theme/material';
 @import '~codemirror/addon/hint/show-hint';
+
+.cm-h-100 .CodeMirror {
+  height: 100%;
+}
