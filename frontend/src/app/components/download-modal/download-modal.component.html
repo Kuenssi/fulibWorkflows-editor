@@ -6,10 +6,6 @@
   <div class="modal-body">
     <div class="col">
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="allCheck" [(ngModel)]="exportOptions.exportAll">
-        <label class="form-check-label" for="allCheck">Everything</label>
-      </div>
-      <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="yamlCheck" [(ngModel)]="exportOptions.exportYaml">
         <label class="form-check-label" for="yamlCheck">YAML (Codemirror Content)</label>
       </div>
@@ -20,6 +16,10 @@
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="pagesCheck" [(ngModel)]="exportOptions.exportPages">
         <label class="form-check-label" for="pagesCheck">Mockups</label>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-outline-secondary" (click)="deselectAll()">Deselect All</button>
+        <button type="button" class="btn btn-outline-success" (click)="selectAll()">Select All</button>
       </div>
     </div>
   </div>

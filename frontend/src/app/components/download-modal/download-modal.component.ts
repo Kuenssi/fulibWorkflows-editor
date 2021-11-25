@@ -17,7 +17,6 @@ export class DownloadModalComponent {
   @Input() public cmContent!: string;
 
   public exportOptions: ExportOptions = {
-    exportAll: false,
     exportYaml: false,
     exportBoard: true,
     exportPages: false,
@@ -33,5 +32,21 @@ export class DownloadModalComponent {
         this.fulibWorkflowsService.downloadZip(this.cmContent, this.exportOptions);
       }
     });
+  }
+
+  selectAll() {
+    this.exportOptions = {
+      exportYaml: true,
+      exportBoard: true,
+      exportPages: true,
+    };
+  }
+
+  deselectAll() {
+    this.exportOptions = {
+      exportYaml: false,
+      exportBoard: false,
+      exportPages: false,
+    };
   }
 }
