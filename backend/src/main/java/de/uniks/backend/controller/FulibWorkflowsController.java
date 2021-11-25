@@ -80,17 +80,17 @@ public class FulibWorkflowsController {
                     ArrayList<File> files = new ArrayList<>();
 
                     // Create Yaml file
-                    File yamlFile = new File("workflow.yaml");
+                    File yamlFile = new File("tmp/workflow.yaml");
                     Files.writeString(Path.of(yamlFile.getPath()), generateResult.getBoard());
                     files.add(yamlFile);
 
                     // Create Board file
-                    File boardFile = new File("board.html");
+                    File boardFile = new File("tmp/board.html");
                     Files.writeString(Path.of(boardFile.getPath()), generateResult.getBoard());
                     files.add(boardFile);
 
                     for (int i = 1; i <= generateResult.getNumberOfPages(); i++) {
-                        File mockupFile = new File(i + "_mockup.html");
+                        File mockupFile = new File("tmp/" + i + "_mockup.html");
                         Files.writeString(Path.of(mockupFile.getPath()), generateResult.getPages().get(i));
                         files.add(mockupFile);
                     }

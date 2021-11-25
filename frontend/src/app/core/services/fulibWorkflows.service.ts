@@ -18,7 +18,6 @@ export class FulibWorkflowsService {
   public downloadZip(cmContent: string, fileName: string) {
     this.httpService.postFile(environment.backendUrl + environment.download, cmContent).subscribe(
       (res) => {
-        console.log(res);
         FileExportHelper.resToFileDownload(res, fileName, MIME_TYPES.zip);
       }
     );
