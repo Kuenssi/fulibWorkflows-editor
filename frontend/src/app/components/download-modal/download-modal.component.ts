@@ -31,6 +31,7 @@ export class DownloadModalComponent {
       if (!reason) {
         this.fulibWorkflowsService.downloadZip(this.cmContent, this.exportOptions);
       }
+    }).catch(() => {
     });
   }
 
