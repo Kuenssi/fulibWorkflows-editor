@@ -37,25 +37,31 @@ public class FulibWorkflowsService {
     }
 
 
-    public byte[] createZip(String yamlData) {
+    public byte[] createZip(String yamlData, Map<String, String> queryParams) {
         GenerateResult generateResult = generateFromYaml(yamlData);
 
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
             ZipOutputStream zipOutputStream = new ZipOutputStream(byteArrayOutputStream);
 
             // Yaml file
-            createZipEntry(zipOutputStream, "workflow.es.yaml", yamlData);
+            if (queryParams.get("exportYaml").equals("true")) {
+                createZipEntry(zipOutputStream, "workflow.es.yaml", yamlData);
+            }
 
             // Board file
-            createZipEntry(zipOutputStream, "board.html", generateResult.getBoard());
+            if (queryParams.get("exportBoard").equals("true")) {
+                createZipEntry(zipOutputStream, "board.html", generateResult.getBoard());
+            }
 
             // Mockup Directory
-            zipOutputStream.putNextEntry(new ZipEntry("mockups/"));
+            if (queryParams.get("exportPages").equals("true")) {
+                zipOutputStream.putNextEntry(new ZipEntry("mockups/"));
 
-            // Mockup files
-            for (int i = 1; i <= generateResult.getNumberOfPages(); i++) {
-                String fileName = "mockups/" + i + "_mockup.html";
-                createZipEntry(zipOutputStream, fileName, generateResult.getPages().get(i));
+                // Mockup files
+                for (int i = 1; i <= generateResult.getNumberOfPages(); i++) {
+                    String fileName = "mockups/" + i + "_mockup.html";
+                    createZipEntry(zipOutputStream, fileName, generateResult.getPages().get(i));
+                }
             }
 
             zipOutputStream.finish();
@@ -63,7 +69,8 @@ public class FulibWorkflowsService {
             zipOutputStream.close();
 
             return byteArrayOutputStream.toByteArray();
-        } catch (IOException ioe) {
+        } catch (
+                IOException ioe) {
             ioe.printStackTrace();
             logger.error(ioe.getMessage());
         }
