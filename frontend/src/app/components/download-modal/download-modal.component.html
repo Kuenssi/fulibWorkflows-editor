@@ -6,28 +6,28 @@
   <div class="modal-body">
     <div class="col">
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="allCheck" [(ngModel)]="exportAll">
+        <input type="checkbox" class="form-check-input" id="allCheck" [(ngModel)]="exportOptions.exportAll">
         <label class="form-check-label" for="allCheck">Everything</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="yamlCheck" [(ngModel)]="exportYaml">
+        <input type="checkbox" class="form-check-input" id="yamlCheck" [(ngModel)]="exportOptions.exportYaml">
         <label class="form-check-label" for="yamlCheck">YAML (Codemirror Content)</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="boardCheck" [(ngModel)]="exportBoard">
-        <label class="form-check-label" for="boardCheck">Check me out</label>
+        <input type="checkbox" class="form-check-input" id="boardCheck" [(ngModel)]="exportOptions.exportBoard">
+        <label class="form-check-label" for="boardCheck">Board</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="pagesCheck" [(ngModel)]="exportPages">
-        <label class="form-check-label" for="pagesCheck">Check me out</label>
+        <input type="checkbox" class="form-check-input" id="pagesCheck" [(ngModel)]="exportOptions.exportPages">
+        <label class="form-check-label" for="pagesCheck">Mockups</label>
       </div>
     </div>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-warning"
-            (click)="modal.close()">Dismiss
+    <button type="button" class="btn btn-secondary"
+            (click)="modal.close('Dismiss')">Dismiss
     </button>
-    <button type="button" class="btn btn-success" (click)="downloadData()">Download</button>
+    <button type="button" class="btn btn-success" (click)="modal.close()">Download</button>
   </div>
 </ng-template>

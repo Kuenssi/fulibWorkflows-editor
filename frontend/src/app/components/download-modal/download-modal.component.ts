@@ -1,65 +1,37 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
+import {ExportOptions} from '../../core/model/ExportOptions';
 import {GenerateResult} from '../../core/model/GenerateResult';
 import {FulibWorkflowsService} from '../../core/services/fulibWorkflows.service';
-import {FileExportHelper, MIME_TYPES} from '../../core/file-export.helper';
 
 @Component({
   selector: 'app-download-modal',
   templateUrl: './download-modal.component.html',
   styleUrls: ['./download-modal.component.scss']
 })
-export class DownloadModalComponent implements OnInit {
+export class DownloadModalComponent {
   @ViewChild('download') private downloadModal!: NgbActiveModal;
 
   @Input() public data!: GenerateResult;
   @Input() public cmContent!: string;
 
-  public selectedDownloadOption!: string | undefined;
-
-  public exportAll = false;
-  public exportYaml = false;
-  public exportBoard = false;
-  public exportPages = false;
+  public exportOptions: ExportOptions = {
+    exportAll: false,
+    exportYaml: false,
+    exportBoard: true,
+    exportPages: false,
+  };
 
   constructor(private modalService: NgbModal,
               private fulibWorkflowsService: FulibWorkflowsService) {
   }
 
-  ngOnInit() {
-    if (this.selectedDownloadOption) {
-      this.selectedDownloadOption = undefined;
-    }
-  }
-
   public open() {
-    this.modalService.open(this.downloadModal, {centered: true}).result.then(() => {
-    }).catch(() => {
+    this.modalService.open(this.downloadModal, {centered: true}).result.then((reason) => {
+      if (!reason) {
+        this.fulibWorkflowsService.downloadZip(this.cmContent, this.exportOptions);
+      }
     });
-  }
-
-  public downloadData() {
-    // TODO -> need to discuss wanted functionality with albert
-    switch (this.selectedDownloadOption) {
-      case 'Only Board':
-        if (this.data.board) {
-          FileExportHelper.stringToFileDownload(this.data.board, 'board.html', MIME_TYPES.html);
-        }
-        break;
-      case 'Only Mockups':
-        this.fulibWorkflowsService.downloadZip(this.cmContent, 'mockups.zip');
-        break;
-      case 'Only YAML':
-        FileExportHelper.stringToFileDownload(this.cmContent, 'workflow.es.yaml', MIME_TYPES.html);
-        break;
-      case 'Everything':
-        // TODO With or without a gradle project?
-        this.fulibWorkflowsService.downloadZip(this.cmContent, 'export.zip');
-        break;
-      default:
-        break;
-    }
-    this.modalService.dismissAll();
   }
 }

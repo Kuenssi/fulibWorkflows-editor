@@ -1,8 +1,9 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 
+import {GenerateResult} from './core/model/GenerateResult';
+import {createMapFromAnswer} from './core/helper/map.helper';
 import {initialExample} from './core/examples/initial.example';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
-import {createMapFromAnswer, GenerateResult} from './core/model/GenerateResult';
 
 @Component({
   selector: 'app-root',
