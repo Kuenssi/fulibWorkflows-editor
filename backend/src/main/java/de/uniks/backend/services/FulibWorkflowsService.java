@@ -4,15 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.uniks.backend.model.GenerateResult;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
-import org.fulib.workflows.html.HtmlGenerator3;
+import org.fulib.workflows.events.Board;
+import org.fulib.workflows.generators.BoardGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -109,26 +107,18 @@ public class FulibWorkflowsService {
     }
 
     private String getBoardResult(String yamlData) {
-        String result = "";
+        BoardGenerator boardGenerator = new BoardGenerator();
+        Board board = boardGenerator.generateBoardFromString(yamlData);
 
-        HtmlGenerator3 htmlGenerator3 = new HtmlGenerator3();
+        String answer = "";
+
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            File tempFile = File.createTempFile("test", ".yaml");
-
-            Files.writeString(Path.of(tempFile.getPath()), yamlData);
-
-            htmlGenerator3.generateViewFiles(tempFile.getPath(), "Test"); // TODO tmp file for now -> Write new method for direct data input in fulibWorkflows later
-
-            if (!tempFile.delete()) {
-                logger.error("Could not delete tempFile");
-            }
-
-            result = Files.readString(Path.of("./tmp/Test/TestEventStorming.html"));
-
-        } catch (IOException e) {
-            logger.error(e.getMessage());
+            answer = objectMapper.writeValueAsString(board);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
 
-        return result;
+        return answer;
     }
 }
