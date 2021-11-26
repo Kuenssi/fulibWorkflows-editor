@@ -18,6 +18,9 @@
       </button>
     </div>
   </div>
+  <div class="legend">
+    <span>Hello there...</span>
+  </div>
   <div class="board">
     <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
             height="100%" width="100%"></iframe>
