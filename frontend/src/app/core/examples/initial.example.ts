@@ -5,6 +5,6 @@ export const initialExample =
   '\n' +
   '- page:\n' +
   '    - name: First Page\n' +
-  '    - label: First Page\n' +
+  '    - text: First Page\n' +
   '    - button: Red Button\n' +
   '    - input: Name\n';
