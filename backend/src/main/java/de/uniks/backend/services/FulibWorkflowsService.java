@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.uniks.backend.model.GenerateResult;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
-import org.fulib.workflows.events.Board;
 import org.fulib.workflows.generators.BoardGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,39 +85,38 @@ public class FulibWorkflowsService {
 
     private GenerateResult generateFromYaml(String yamlData) {
         GenerateResult generateResult = new GenerateResult();
+        BoardGenerator boardGenerator = new BoardGenerator();
 
-        generateResult.setBoard(getBoardResult(yamlData));
+        Map<String, String> htmls = boardGenerator.generateAndReturnHTMLsFromString(yamlData);
 
-        generateResult.setPages(getPagesResult(yamlData));
+        generateResult.setBoard(getBoardResult(htmls));
+
+        generateResult.setPages(getPagesResult(htmls));
 
         generateResult.setNumberOfPages(generateResult.getPages().size());
 
         return generateResult;
     }
 
-    private Map<Integer, String> getPagesResult(String yamlData) {
-        Map<Integer, String> result = new HashMap<>();
-        // TODO Not yet possible to get Pages via fulibWorkflows
-        result.put(1, "Page 01");
-        result.put(2, "Page 02");
-        result.put(3, "Page 03");
-        result.put(4, "Page 04");
-        return result;
+    private String getBoardResult(Map<String, String> htmls) {
+        for (String key : htmls.keySet()) {
+            if (key.contains("Board")) {
+                return htmls.get(key);
+            }
+        }
+        return "Nothing found";
     }
 
-    private String getBoardResult(String yamlData) {
-        BoardGenerator boardGenerator = new BoardGenerator();
-        Board board = boardGenerator.generateBoardFromString(yamlData);
+    private Map<Integer, String> getPagesResult(Map<String, String> htmls) {
+        Map<Integer, String> result = new HashMap<>();
 
-        String answer = "";
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            answer = objectMapper.writeValueAsString(board);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        for (String key : htmls.keySet()) {
+            if (key.contains("_")) {
+                int index = Integer.parseInt(key.substring(0, key.indexOf("_")));
+                result.put(index + 1, htmls.get(key));
+            }
         }
 
-        return answer;
+        return result;
     }
 }
