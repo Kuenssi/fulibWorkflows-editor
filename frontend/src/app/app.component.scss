@@ -4,7 +4,7 @@
   grid-template-rows: 30% 70%;
   grid-template-areas:
     "codemirror buttons board"
-    "codemirror legend mockup";
+    "codemirror buttons mockup";
   gap: 1% 1%;
 }
 
@@ -16,10 +16,6 @@
 
 .buttons {
   grid-area: buttons;
-}
-
-.legend {
-  grid-area: legend;
 }
 
 .board {
