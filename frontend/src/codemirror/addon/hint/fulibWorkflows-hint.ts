@@ -1,8 +1,7 @@
 import * as CodeMirror from 'codemirror';
 
-const keywords = ['board', 'workflow', 'subprocess', 'boundedContext', 'brokerTopic', 'externalSystem', 'events',
-  'service', 'port', 'command', 'event', 'policy', 'trigger', 'class', 'data', 'action', 'query',
-  'page', 'name', 'label', 'button', 'input', 'fill', 'password'];
+const noteKeywords = ['workflow', 'externalSystem', 'service', 'command', 'event', 'policy', 'user', 'class', 'data', 'page'];
+const pageKeywords = ['name', 'text', 'input', 'password', 'button']
 
 // @ts-ignore
 CodeMirror.registerHelper('hint', 'fulibWorkflows', (cm) => {
@@ -14,11 +13,17 @@ CodeMirror.registerHelper('hint', 'fulibWorkflows', (cm) => {
   // Get Current Word
   const word = cm.getRange(range.anchor, range.head);
 
+  // TODO Check context
+
+  // TODO Check if `- ` needed
+
+  // TODO Check if `: ` needed
+
   // Filter Keywords for possible completions for the current word
   const result: string[] = [];
-  for (const keyword of keywords) {
-    if (!word || word === ' ' || keyword.indexOf(word) === 0) {
-      result.push(keyword);
+  for (const noteKeyword of noteKeywords) {
+    if (!word || word === ' ' || noteKeyword.indexOf(word) === 0) {
+      result.push(noteKeyword);
     }
   }
 
