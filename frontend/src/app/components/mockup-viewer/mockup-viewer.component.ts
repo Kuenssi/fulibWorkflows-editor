@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {GenerateResult} from '../../core/model/GenerateResult';
 
 @Component({
@@ -7,11 +7,19 @@ import {GenerateResult} from '../../core/model/GenerateResult';
   styleUrls: ['./mockup-viewer.component.scss']
 })
 export class MockupViewerComponent {
+  @ViewChild('mockupFrame') private mockupFrame!: HTMLIFrameElement;
+
   @Input() generateResult!: GenerateResult;
 
-  private currentPageIndex = 1;
+  public currentPageIndex = 1;
 
   constructor() {
+  }
+
+  setCurrentPageIndex(index: number) {
+    this.currentPageIndex = index;
+    console.log('MockupView: ' + index);
+    this.mockupFrame.contentDocument?.location.reload(true);
   }
 
   getCurrentPage(): string {

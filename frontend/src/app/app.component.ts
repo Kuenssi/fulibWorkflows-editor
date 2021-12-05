@@ -1,11 +1,12 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 
-import {GenerateResult} from './core/model/GenerateResult';
-import {createMapFromAnswer} from './core/helper/map.helper';
-import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {pmExample} from './core/examples/pm.example';
 import {msExample} from './core/examples/ms.example';
 import {pagesExample} from './core/examples/pages.example';
+import {GenerateResult} from './core/model/GenerateResult';
+import {createMapFromAnswer} from './core/helper/map.helper';
+import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
+import {MockupViewerComponent} from './components/mockup-viewer/mockup-viewer.component';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ import {pagesExample} from './core/examples/pages.example';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  @ViewChild("mockupViewer") private mockupViewerComponent!: MockupViewerComponent;
+
   //Codemirror
   public content!: any;
   public codemirrorOptions: any;
@@ -37,6 +40,9 @@ export class AppComponent implements OnInit {
       },
       autofocus: true,
     };
+
+    // https://stackoverflow.com/questions/41616112/calling-components-function-from-iframe
+    (<any>window).setPageFromIframe = this.setPageFromIframe.bind(this);
   }
 
   ngOnInit() {
@@ -76,5 +82,10 @@ export class AppComponent implements OnInit {
         };
       }
     );
+  }
+
+  setPageFromIframe(index: number) {
+    console.log(index);
+    this.mockupViewerComponent.setCurrentPageIndex(index + 1); // +1 because index is zero based
   }
 }

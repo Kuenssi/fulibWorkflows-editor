@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="mockup-view">
-    <iframe *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
+    <iframe #mockupFrame *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
             height="100%" width="100%"></iframe>
   </div>
 </div>
