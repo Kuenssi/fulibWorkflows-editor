@@ -19,6 +19,8 @@ export class MockupViewerComponent {
   setCurrentPageIndex(index: number) {
     this.currentPageIndex = index;
     console.log('MockupView: ' + index);
+
+    // https://stackoverflow.com/questions/21937168/refresh-an-iframe-without-refreshing-the-entire-page/47135355
     this.mockupFrame.contentDocument?.location.reload(true);
   }
 
