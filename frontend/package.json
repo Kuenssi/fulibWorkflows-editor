@@ -20,6 +20,7 @@
     "@angular/router": "^12.2.13",
     "@ctrl/ngx-codemirror": "^5.1.1",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "angular-split": "^13.1.0",
     "bootstrap": "^4.6.1",
     "bootstrap-icons": "^1.7.1",
     "codemirror": "^5.64.0",

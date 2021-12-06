@@ -1,3 +1,4 @@
+<!-- Navbar Area -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <span class="navbar-brand">fulibWorkflows</span>
 
@@ -32,20 +33,28 @@
   </div>
 </nav>
 
-<div class="container-fluid min-vh-100">
-  <div class="codemirror">
-    <ngx-codemirror class="cm-h-100"
-                    [(ngModel)]="content"
-                    [options]="codemirrorOptions">
-    </ngx-codemirror>
-  </div>
-  <div class="board">
-    <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
-            height="100%" width="100%"></iframe>
-  </div>
-  <div class="mockup">
-    <app-mockup-viewer #mockupViewer [generateResult]="generateResult"></app-mockup-viewer>
-  </div>
+<!-- Main Content Area -->
+<div class="container-fluid" style="background-color: lightgray">
+  <as-split direction="horizontal">
+    <as-split-area [size]="30">
+      <ngx-codemirror [(ngModel)]="content"
+                      [options]="codemirrorOptions">
+      </ngx-codemirror>
+    </as-split-area>
+
+    <as-split-area [size]="70">
+      <as-split direction="vertical" [useTransition]="true">
+        <as-split-area [size]="35">
+          <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
+                  height="100%" width="100%"></iframe>
+        </as-split-area>
+
+        <as-split-area [size]="65">
+          <app-mockup-viewer #mockupViewer [generateResult]="generateResult"></app-mockup-viewer>
+        </as-split-area>
+      </as-split>
+    </as-split-area>
+  </as-split>
 </div>
 
 <app-download-modal #downloadModal [data]="generateResult" [cmContent]="content"></app-download-modal>
