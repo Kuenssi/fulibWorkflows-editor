@@ -14,7 +14,7 @@ import {MockupViewerComponent} from './components/mockup-viewer/mockup-viewer.co
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild("mockupViewer") private mockupViewerComponent!: MockupViewerComponent;
+  @ViewChild('mockupViewer') private mockupViewerComponent!: MockupViewerComponent;
 
   //Codemirror
   public content!: any;
@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
 
     this.codemirrorOptions = {
       lineNumbers: true,
-      theme: 'material',
       mode: 'yaml',
       extraKeys: {
         'Ctrl-Space': 'autocomplete',

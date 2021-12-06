@@ -1,36 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <span class="navbar-brand">fulibWorkflows</span>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <div ngbDropdown class="m-1">
+          <button class="btn btn-primary" id="exampleSelection"
+                  ngbDropdownToggle>{{currentExampleDesc}}</button>
+          <div ngbDropdownMenu aria-labelledby="exampleSelection">
+            <ng-container *ngFor="let example of examplesList; index as i">
+              <button ngbDropdownItem (click)="changeExampleContent(i)">{{example}}</button>
+            </ng-container>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <button class="btn btn-primary m-1"
+                (click)="generate()">Generate
+        </button>
+      </li>
+
+      <li class="nav-item">
+
+        <button class="btn btn-success m-1"
+                (click)="downloadModal.open()">
+          Download
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container-fluid min-vh-100">
   <div class="codemirror">
     <ngx-codemirror class="cm-h-100"
                     [(ngModel)]="content"
                     [options]="codemirrorOptions">
     </ngx-codemirror>
-  </div>
-  <div class="buttons">
-    <div class="row justify-content-center">
-      <span>Select Example:</span>
-    </div>
-    <div class="row justify-content-center">
-      <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="exampleSelection" ngbDropdownToggle>{{currentExampleDesc}}</button>
-        <div ngbDropdownMenu aria-labelledby="exampleSelection">
-          <ng-container *ngFor="let example of examplesList; index as i">
-            <button ngbDropdownItem (click)="changeExampleContent(i)">{{example}}</button>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <button class="btn btn-primary m-1"
-              (click)="generate()">Generate
-      </button>
-    </div>
-    <div class="row justify-content-center">
-      <button class="btn btn-success m-1"
-              (click)="downloadModal.open()">
-        Download
-      </button>
-    </div>
   </div>
   <div class="board">
     <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
