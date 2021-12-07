@@ -7,21 +7,11 @@ import {GenerateResult} from '../../core/model/GenerateResult';
   styleUrls: ['./mockup-viewer.component.scss']
 })
 export class MockupViewerComponent {
-  @ViewChild('mockupFrame') private mockupFrame!: HTMLIFrameElement;
-
   @Input() generateResult!: GenerateResult;
 
   public currentPageIndex = 1;
 
   constructor() {
-  }
-
-  setCurrentPageIndex(index: number) {
-    this.currentPageIndex = index;
-    console.log('MockupView: ' + index);
-
-    // https://stackoverflow.com/questions/21937168/refresh-an-iframe-without-refreshing-the-entire-page/47135355
-    this.mockupFrame.contentDocument?.location.reload(true);
   }
 
   getCurrentPage(): string {

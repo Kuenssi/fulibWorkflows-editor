@@ -7,7 +7,6 @@ import {pagesExample} from './core/examples/pages.example';
 import {GenerateResult} from './core/model/GenerateResult';
 import {createMapFromAnswer} from './core/helper/map.helper';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
-import {MockupViewerComponent} from './components/mockup-viewer/mockup-viewer.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,6 @@ import {MockupViewerComponent} from './components/mockup-viewer/mockup-viewer.co
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('mockupViewer') private mockupViewerComponent!: MockupViewerComponent;
   @ViewChild("split") split!: SplitComponent
 
   //Codemirror
@@ -89,7 +87,6 @@ export class AppComponent implements OnInit {
 
   setPageFromIframe(index: number) {
     console.log(index);
-    this.mockupViewerComponent.setCurrentPageIndex(index + 1); // +1 because index is zero based
   }
 
   // Source: https://github.com/angular-split/angular-split/blob/main/src/app/examples/iframes/iframes.component.ts

@@ -22,7 +22,7 @@
   </div>
 
   <div class="h-100">
-    <iframe #mockupFrame *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
+    <iframe *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
             height="100%" width="100%"></iframe>
   </div>
 </div>
