@@ -9,6 +9,7 @@ import {GenerateResult} from '../../core/model/GenerateResult';
 })
 export class MockupViewerComponent {
   @Input() generateResult!: GenerateResult;
+  @Input() index!: number;
 
   public currentPageIndex = 1;
 
@@ -20,7 +21,15 @@ export class MockupViewerComponent {
       return ''
     }
 
-    const currentPage = this.generateResult.pages.get(this.currentPageIndex);
+    let currentIndex;
+
+    if (this.index && this.index !== this.currentPageIndex) {
+      currentIndex = this.index;
+    } else {
+      currentIndex = this.currentPageIndex;
+    }
+
+    const currentPage = this.generateResult.pages.get(currentIndex);
 
     if (!currentPage) {
       return '';

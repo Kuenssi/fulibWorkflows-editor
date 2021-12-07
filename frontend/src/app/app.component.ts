@@ -1,4 +1,4 @@
-import {Component, NgZone, OnChanges, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, NgZone, ViewChild} from '@angular/core';
 
 import {pmExample} from './core/examples/pm.example';
 import {msExample} from './core/examples/ms.example';
@@ -13,7 +13,7 @@ import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnChanges {
+export class AppComponent {
   @ViewChild('split') split!: SplitComponent
 
   //Codemirror
@@ -29,7 +29,8 @@ export class AppComponent implements OnChanges {
   public newPageIndex!: number;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
-              private zone: NgZone) {
+              private zone: NgZone,
+              private changeDetectorRef: ChangeDetectorRef) {
     // https://angular.io/api/core/NgZone
     const generateHandler = () => this.zone.run(() => this.generate());
 
@@ -45,9 +46,6 @@ export class AppComponent implements OnChanges {
 
     // https://stackoverflow.com/questions/41616112/calling-components-function-from-iframe
     (<any>window).setPageFromIframe = this.setPageFromIframe.bind(this);
-  }
-
-  ngOnChanges() {
   }
 
   changeExampleContent(index: number) {
@@ -87,8 +85,8 @@ export class AppComponent implements OnChanges {
   }
 
   setPageFromIframe(index: number) {
-    this.newPageIndex = index + 1; // +1 because map is 1 based and the generated fulibWorkflows is 0 based right now
-    console.log(this.newPageIndex);
+    this.zone.run(() =>
+      this.newPageIndex = index + 1); // +1 because map is 1 based and the generated fulibWorkflows is 0 based right now
   }
 
   // Source: https://github.com/angular-split/angular-split/blob/main/src/app/examples/iframes/iframes.component.ts
