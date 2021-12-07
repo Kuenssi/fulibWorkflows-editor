@@ -17,12 +17,11 @@
               (click)="setLastPage()">
         <span>Last Page</span>
       </button>
-      <hr class="solid">
     </div>
   </div>
 
   <div class="h-100">
-    <iframe *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
+    <iframe *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentIFrameContent() | safe"
             height="100%" width="100%"></iframe>
   </div>
 </div>

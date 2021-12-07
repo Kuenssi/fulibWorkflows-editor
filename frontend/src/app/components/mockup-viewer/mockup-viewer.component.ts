@@ -10,29 +10,32 @@ import {GenerateResult} from '../../core/model/GenerateResult';
 export class MockupViewerComponent {
   @Input() generateResult!: GenerateResult;
   @Input() index!: number | undefined;
+  @Input() currentDisplay!: 'pages' | 'diagrams';
 
   public currentPageIndex = 1;
 
   constructor() {
   }
 
-  getCurrentPage(): string {
-    if (!this.generateResult || !this.generateResult.pages) {
-      return ''
-    }
-
-    if (this.index) {
-      this.currentPageIndex = this.index;
-      this.index = undefined;
-    }
-
-    const currentPage = this.generateResult.pages.get(this.currentPageIndex);
-
-    if (!currentPage) {
+  getCurrentIFrameContent(): string {
+    if (!this.currentDisplay) {
       return '';
     }
 
-    return currentPage;
+    let result;
+    switch (this.currentDisplay) {
+      case 'pages':
+        result = this.getCurrentPage();
+        break;
+      case 'diagrams':
+        result = this.getCurrentDiagram();
+        break;
+      default:
+        result = '';
+        console.log('Unknown type');
+    }
+
+    return result;
   }
 
   pagesReady(): boolean {
@@ -73,5 +76,28 @@ export class MockupViewerComponent {
 
   setLastPage() {
     this.currentPageIndex = this.generateResult.numberOfPages;
+  }
+
+  private getCurrentPage(): string {
+    if (!this.generateResult || !this.generateResult.pages) {
+      return ''
+    }
+
+    if (this.index) {
+      this.currentPageIndex = this.index;
+      this.index = undefined;
+    }
+
+    const currentPage = this.generateResult.pages.get(this.currentPageIndex);
+
+    if (!currentPage) {
+      return '';
+    }
+
+    return currentPage;
+  }
+
+  private getCurrentDiagram(): string {
+    return '';
   }
 }

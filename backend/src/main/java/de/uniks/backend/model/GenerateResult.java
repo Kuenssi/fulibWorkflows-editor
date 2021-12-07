@@ -6,6 +6,8 @@ public class GenerateResult {
     private String board;
     private Map<Integer, String> pages;
     private int numberOfPages;
+    private Map<Integer, String> diagrams;
+    private int numberOfDiagrams;
 
     public String getBoard() {
         return board;
@@ -29,5 +31,21 @@ public class GenerateResult {
 
     public void setNumberOfPages(int numberOfPages) {
         this.numberOfPages = numberOfPages;
+    }
+
+    public Map<Integer, String> getDiagrams() {
+        return diagrams;
+    }
+
+    public void setDiagrams(Map<Integer, String> diagrams) {
+        this.diagrams = diagrams;
+    }
+
+    public int getNumberOfDiagrams() {
+        return numberOfDiagrams;
+    }
+
+    public void setNumberOfDiagrams(int numberOfDiagrams) {
+        this.numberOfDiagrams = numberOfDiagrams;
     }
 }

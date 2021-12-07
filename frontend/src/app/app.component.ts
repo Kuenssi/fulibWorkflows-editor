@@ -27,6 +27,7 @@ export class AppComponent {
 
   public showIframeHider = false;
   public newPageIndex!: number;
+  public currentDisplay: 'pages' | 'diagrams' = 'pages';
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
               private zone: NgZone) {
@@ -73,11 +74,14 @@ export class AppComponent {
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer: GenerateResult) => {
         const pages = createMapFromAnswer(answer.pages, answer.numberOfPages);
+        const diagrams = createMapFromAnswer(answer.diagrams, answer.numberOfDiagrams);
 
         this.generateResult = {
           board: answer.board,
           pages: pages,
-          numberOfPages: answer.numberOfPages
+          numberOfPages: answer.numberOfPages,
+          diagrams: diagrams,
+          numberOfDiagrams: answer.numberOfDiagrams,
         };
       }
     );
