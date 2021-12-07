@@ -1,4 +1,4 @@
-import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Component, NgZone, OnChanges, ViewChild} from '@angular/core';
 
 import {pmExample} from './core/examples/pm.example';
 import {msExample} from './core/examples/ms.example';
@@ -13,8 +13,8 @@ import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  @ViewChild("split") split!: SplitComponent
+export class AppComponent implements OnChanges {
+  @ViewChild('split') split!: SplitComponent
 
   //Codemirror
   public content!: any;
@@ -25,7 +25,8 @@ export class AppComponent implements OnInit {
   public currentExampleDesc: string = 'Select example';
   public examplesList = ['Data Modelling', 'Microservices', 'Pages'];
 
-  public showIframeHider = false
+  public showIframeHider = false;
+  public newPageIndex!: number;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
               private zone: NgZone) {
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
     (<any>window).setPageFromIframe = this.setPageFromIframe.bind(this);
   }
 
-  ngOnInit() {
+  ngOnChanges() {
   }
 
   changeExampleContent(index: number) {
@@ -86,7 +87,8 @@ export class AppComponent implements OnInit {
   }
 
   setPageFromIframe(index: number) {
-    console.log(index);
+    this.newPageIndex = index + 1; // +1 because map is 1 based and the generated fulibWorkflows is 0 based right now
+    console.log(this.newPageIndex);
   }
 
   // Source: https://github.com/angular-split/angular-split/blob/main/src/app/examples/iframes/iframes.component.ts
@@ -98,7 +100,7 @@ export class AppComponent implements OnInit {
     this.showIframeHider = false
   }
 
-  splitGutterClick({ gutterNum }: IOutputData) {
+  splitGutterClick({gutterNum}: IOutputData) {
     // By default, clicking the gutter without changing position does not trigger the 'dragEnd' event
     // This can be fixed by manually notifying the component
     // See issue: https://github.com/angular-split/angular-split/issues/186
