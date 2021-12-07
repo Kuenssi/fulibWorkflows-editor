@@ -34,25 +34,27 @@
 </nav>
 
 <!-- Main Content Area -->
-<div class="container-fluid" style="background-color: lightgray">
+<div class="vh-100" style="background-color: aliceblue">
   <as-split direction="horizontal">
     <as-split-area [size]="30">
-      <div class="vh-100">
-        <ngx-codemirror [(ngModel)]="content"
-                        [options]="codemirrorOptions">
-        </ngx-codemirror>
-      </div>
+      <ngx-codemirror [(ngModel)]="content"
+                      [options]="codemirrorOptions">
+      </ngx-codemirror>
     </as-split-area>
 
     <as-split-area [size]="70">
-      <as-split direction="vertical" [useTransition]="true">
+      <as-split direction="vertical">
         <as-split-area [size]="35">
-          <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
-                  height="100%" width="100%"></iframe>
+          <div class="h-100" style="background-color: white">
+            <iframe *ngIf="generateResult" title="Boards" [srcdoc]="generateResult.board | safe"
+                    height="100%" width="100%">
+            </iframe>
+          </div>
         </as-split-area>
-
         <as-split-area [size]="65">
-          <app-mockup-viewer #mockupViewer [generateResult]="generateResult"></app-mockup-viewer>
+          <div class="h-100" style="background-color: white">
+            <app-mockup-viewer #mockupViewer [generateResult]="generateResult"></app-mockup-viewer>
+          </div>
         </as-split-area>
       </as-split>
     </as-split-area>
