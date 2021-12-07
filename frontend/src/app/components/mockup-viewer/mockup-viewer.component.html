@@ -1,6 +1,6 @@
-<div class="mockup-viewer vh-100">
-  <div class="button-panel">
-    <div class="d-grid gap-2 d-md-block">
+<div class="h-100"  style="background-color: white">
+  <div>
+    <div class="d-grid d-md-block">
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="previousPage()">
         <span>Previous Page</span>
@@ -17,9 +17,11 @@
               (click)="setLastPage()">
         <span>Last Page</span>
       </button>
+      <hr class="solid">
     </div>
   </div>
-  <div class="mockup-view">
+
+  <div class="h-100">
     <iframe #mockupFrame *ngIf="pagesReady()" title="Mockups" [srcdoc]="getCurrentPage() | safe"
             height="100%" width="100%"></iframe>
   </div>

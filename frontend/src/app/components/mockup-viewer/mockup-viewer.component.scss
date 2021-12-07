@@ -1,17 +1,3 @@
-.mockup-viewer {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 5% 95%;
-  grid-template-areas:
-    "button-panel"
-    "mockup-view";
-}
-
-.button-panel {
-  grid-area: button-panel;
-  border-bottom: 1px solid black;
-}
-
-.mockup-view {
-  grid-area: mockup-view;
+hr.solid {
+  border-top: solid #999;
 }
