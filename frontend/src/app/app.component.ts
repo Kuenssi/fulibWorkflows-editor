@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, NgZone, ViewChild} from '@angular/core';
+import {Component, NgZone, ViewChild} from '@angular/core';
 
 import {pmExample} from './core/examples/pm.example';
 import {msExample} from './core/examples/ms.example';
@@ -29,8 +29,7 @@ export class AppComponent {
   public newPageIndex!: number;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
-              private zone: NgZone,
-              private changeDetectorRef: ChangeDetectorRef) {
+              private zone: NgZone) {
     // https://angular.io/api/core/NgZone
     const generateHandler = () => this.zone.run(() => this.generate());
 
@@ -85,6 +84,7 @@ export class AppComponent {
   }
 
   setPageFromIframe(index: number) {
+    // It needs to be run in the NgZone because only then angular change detection gets a grip on the change
     this.zone.run(() =>
       this.newPageIndex = index + 1); // +1 because map is 1 based and the generated fulibWorkflows is 0 based right now
   }
