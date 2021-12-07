@@ -37,9 +37,11 @@
 <div class="container-fluid" style="background-color: lightgray">
   <as-split direction="horizontal">
     <as-split-area [size]="30">
-      <ngx-codemirror [(ngModel)]="content"
-                      [options]="codemirrorOptions">
-      </ngx-codemirror>
+      <div class="vh-100">
+        <ngx-codemirror [(ngModel)]="content"
+                        [options]="codemirrorOptions">
+        </ngx-codemirror>
+      </div>
     </as-split-area>
 
     <as-split-area [size]="70">
