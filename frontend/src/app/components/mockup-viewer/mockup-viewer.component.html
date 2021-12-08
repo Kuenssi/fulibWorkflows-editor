@@ -1,21 +1,25 @@
-<div class="h-100"  style="background-color: white">
+<div class="h-100" style="background-color: white">
   <div>
     <div class="d-grid d-md-block">
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="previousPage()">
-        <span>Previous Page</span>
+        <span *ngIf="currentDisplay === 'pages'">Previous Page</span>
+        <span *ngIf="currentDisplay === 'diagrams'">Previous Diagram</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="nextPage()">
-        <span>Next Page</span>
+        <span *ngIf="currentDisplay === 'pages'">Next Page</span>
+        <span *ngIf="currentDisplay === 'diagrams'">Next Diagram</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="setFirstPage()">
-        <span>First Page</span>
+        <span *ngIf="currentDisplay === 'pages'">First Page</span>
+        <span *ngIf="currentDisplay === 'diagrams'">First Diagram</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="setLastPage()">
-        <span>Last Page</span>
+        <span *ngIf="currentDisplay === 'pages'">Last Page</span>
+        <span *ngIf="currentDisplay === 'diagrams'">Last Diagram</span>
       </button>
     </div>
   </div>

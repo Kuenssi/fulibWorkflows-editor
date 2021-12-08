@@ -29,6 +29,18 @@
         </button>
       </li>
     </ul>
+    <ul class="nav justify-content-end" style="margin-right: 10px">
+      <li class="nav-item">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentDisplay">
+          <label ngbButtonLabel class="btn btn-info">
+            <input ngbButton type="radio" [value]="'pages'"> Pages
+          </label>
+          <label ngbButtonLabel class="btn btn-info">
+            <input ngbButton type="radio" [value]="'diagrams'"> Diagrams
+          </label>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>
 

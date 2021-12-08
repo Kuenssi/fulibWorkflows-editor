@@ -98,6 +98,6 @@ export class MockupViewerComponent {
   }
 
   private getCurrentDiagram(): string {
-    return '';
+    return '<h1> Now it is a diagram </h1>';
   }
 }
