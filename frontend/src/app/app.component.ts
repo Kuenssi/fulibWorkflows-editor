@@ -112,7 +112,7 @@ export class AppComponent {
 
   showToast(toastContent: string) {
     this.zone.run(() => {
-      this.toastService.show(toastContent, {classname: 'bg-success text-light'})
+      this.toastService.show(toastContent, { classname: 'bg-success text-light'});
     });
   }
 }
