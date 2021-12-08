@@ -4,7 +4,8 @@
 @import "~bootstrap-icons/font/bootstrap-icons";
 
 @import '~codemirror/lib/codemirror';
-@import '~codemirror/theme/material';
+@import '~codemirror/theme/eclipse';
+@import '~codemirror/theme/darcula';
 @import '~codemirror/addon/hint/show-hint';
 
 .CodeMirror {

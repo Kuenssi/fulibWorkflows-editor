@@ -31,6 +31,17 @@
     </ul>
     <ul class="nav justify-content-end" style="margin-right: 10px">
       <li class="nav-item">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentCodemirrorTheme">
+          <label ngbButtonLabel class="btn btn-info">
+            <input ngbButton type="radio" [value]="'eclipse'" (click)="changeTheme('eclipse')"> Light
+          </label>
+          <label ngbButtonLabel class="btn btn-info">
+            <input ngbButton type="radio" [value]="'darcula'" (click)="changeTheme('darcula')"> Dark
+          </label>
+        </div>
+      </li>
+
+      <li class="nav-item">
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentDisplay">
           <label ngbButtonLabel class="btn btn-info">
             <input ngbButton type="radio" [value]="'pages'"> Pages

@@ -27,6 +27,7 @@ export class AppComponent {
   public showIframeHider = false;
   public newPageIndex!: number;
   public currentDisplay: 'pages' | 'diagrams' = 'pages';
+  public currentCodemirrorTheme: 'eclipse' | 'darcula' = 'eclipse';
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
               public toastService: ToastService,
@@ -36,6 +37,7 @@ export class AppComponent {
 
     this.codemirrorOptions = {
       lineNumbers: true,
+      theme: this.currentCodemirrorTheme,
       mode: 'yaml',
       extraKeys: {
         'Ctrl-Space': 'autocomplete',
@@ -112,7 +114,11 @@ export class AppComponent {
 
   showToast(toastContent: string) {
     this.zone.run(() => {
-      this.toastService.show(toastContent, { classname: 'bg-success text-light'});
+      this.toastService.show(toastContent, {classname: 'bg-success text-light'});
     });
+  }
+
+  changeTheme(theme: string) {
+    this.codemirrorOptions.theme = theme;
   }
 }
