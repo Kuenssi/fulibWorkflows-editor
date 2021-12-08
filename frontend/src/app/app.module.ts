@@ -12,6 +12,8 @@ import {SafePipe} from './core/pipes/safe.pipe';
 import {AngularSplitModule} from 'angular-split';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpService} from './core/services/http.service';
+import {ToastService} from './core/services/toast.service';
+import {ToastsComponent} from './components/toasts/toasts.component';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {MockupViewerComponent} from './components/mockup-viewer/mockup-viewer.component';
 import {DownloadModalComponent} from './components/download-modal/download-modal.component';
@@ -21,7 +23,8 @@ import {DownloadModalComponent} from './components/download-modal/download-modal
     AppComponent,
     DownloadModalComponent,
     SafePipe,
-    MockupViewerComponent
+    MockupViewerComponent,
+    ToastsComponent
   ],
   imports: [
     FormsModule,
@@ -35,7 +38,8 @@ import {DownloadModalComponent} from './components/download-modal/download-modal
   providers: [
     HttpService,
     FulibWorkflowsService,
-    NgbDropdown
+    NgbDropdown,
+    ToastService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,11 +1,10 @@
 import {Component, NgZone, ViewChild} from '@angular/core';
 
-import {pmExample} from './core/examples/pm.example';
-import {msExample} from './core/examples/ms.example';
 import {IOutputData, SplitComponent} from 'angular-split';
-import {pagesExample} from './core/examples/pages.example';
+import {ToastService} from './core/services/toast.service';
 import {GenerateResult} from './core/model/GenerateResult';
 import {createMapFromAnswer} from './core/helper/map.helper';
+import {msExample, pagesExample, pmExample} from './core/examples';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 
 @Component({
@@ -30,6 +29,7 @@ export class AppComponent {
   public currentDisplay: 'pages' | 'diagrams' = 'pages';
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
+              public toastService: ToastService,
               private zone: NgZone) {
     // https://angular.io/api/core/NgZone
     const generateHandler = () => this.zone.run(() => this.generate());
@@ -46,6 +46,7 @@ export class AppComponent {
 
     // https://stackoverflow.com/questions/41616112/calling-components-function-from-iframe
     (<any>window).setPageFromIframe = this.setPageFromIframe.bind(this);
+    (<any>window).showToast = this.showToast.bind(this);
   }
 
   changeExampleContent(index: number) {
@@ -107,5 +108,11 @@ export class AppComponent {
     // This can be fixed by manually notifying the component
     // See issue: https://github.com/angular-split/angular-split/issues/186
     this.split.notify('end', gutterNum)
+  }
+
+  showToast(toastContent: string) {
+    this.zone.run(() => {
+      this.toastService.show(toastContent, {classname: 'bg-success text-light'})
+    });
   }
 }
