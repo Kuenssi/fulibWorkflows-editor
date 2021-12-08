@@ -18,17 +18,17 @@ export class MockupViewerComponent {
   }
 
   getCurrentIFrameContent(): string {
-    if (!this.currentDisplay) {
+    if (!this.currentDisplay || !this.generateResult) {
       return '';
     }
 
     let result;
     switch (this.currentDisplay) {
       case 'pages':
-        result = this.getCurrentPage();
+        result = this.getCurrentContent(this.generateResult.pages);
         break;
       case 'diagrams':
-        result = this.getCurrentDiagram();
+        result = this.getCurrentContent(this.generateResult.diagrams);
         break;
       default:
         result = '';
@@ -78,9 +78,9 @@ export class MockupViewerComponent {
     this.currentPageIndex = this.generateResult.numberOfPages;
   }
 
-  private getCurrentPage(): string {
-    if (!this.generateResult || !this.generateResult.pages) {
-      return ''
+  private getCurrentContent(generateMap: Map<number, string>): string {
+    if (!generateMap) {
+      return '<h1>Nothing generated yet to display</h1>'
     }
 
     if (this.index) {
@@ -88,16 +88,12 @@ export class MockupViewerComponent {
       this.index = undefined;
     }
 
-    const currentPage = this.generateResult.pages.get(this.currentPageIndex);
+    const currentContent = generateMap.get(this.currentPageIndex);
 
-    if (!currentPage) {
+    if (!currentContent) {
       return '';
     }
 
-    return currentPage;
-  }
-
-  private getCurrentDiagram(): string {
-    return '<h1> Now it is a diagram </h1>';
+    return currentContent;
   }
 }
