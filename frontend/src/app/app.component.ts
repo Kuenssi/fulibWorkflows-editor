@@ -4,8 +4,8 @@ import {IOutputData, SplitComponent} from 'angular-split';
 import {ToastService} from './core/services/toast.service';
 import {GenerateResult} from './core/model/GenerateResult';
 import {createMapFromAnswer} from './core/helper/map.helper';
-import {msExample, pagesExample, pmExample} from './core/examples';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
+import {allNotesExample, msExample, newWorkflowExample, pagesExample, pmExample} from './core/examples';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,7 @@ export class AppComponent {
   public generateResult!: GenerateResult;
 
   public currentExampleDesc: string = 'Select example';
-  public examplesList = ['Data Modelling', 'Microservices', 'Pages'];
+  public examplesList = ['Empty workflow', 'All Notes', 'Data Modelling', 'Microservices', 'Pages'];
 
   public showIframeHider = false;
   public newPageIndex!: number;
@@ -58,12 +58,18 @@ export class AppComponent {
     let newContent;
     switch (this.examplesList.indexOf(this.currentExampleDesc)) {
       case 0:
-        newContent = pmExample;
+        newContent = newWorkflowExample;
         break;
       case 1:
-        newContent = msExample;
+        newContent = allNotesExample;
         break;
       case 2:
+        newContent = pmExample;
+        break;
+      case 3:
+        newContent = msExample;
+        break;
+      case 4:
         newContent = pagesExample;
         break;
       default:
