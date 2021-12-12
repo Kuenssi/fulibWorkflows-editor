@@ -87,7 +87,7 @@ public class FulibWorkflowsService {
         GenerateResult generateResult = new GenerateResult();
         BoardGenerator boardGenerator = new BoardGenerator();
 
-        Map<String, String> htmls = boardGenerator.generateAndReturnHTMLsFromString(yamlData);
+        Map<String, String> htmls = boardGenerator.generateAndReturnHTMLs(yamlData);
 
         generateResult.setBoard(getBoardResult(htmls));
 
