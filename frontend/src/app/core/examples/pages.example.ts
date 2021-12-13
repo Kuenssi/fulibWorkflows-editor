@@ -20,5 +20,4 @@ export const pagesExample =
   '- page:\n' +
   '    - name: Overview\n' +
   '    - text: Your current Purchases\n' +
-  '    - button: Add Purchase\n' +
-  '\n';
+  '    - button: Add Purchase';

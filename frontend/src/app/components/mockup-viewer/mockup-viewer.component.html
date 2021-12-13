@@ -5,25 +5,21 @@
               (click)="setFirstPage()">
         <span *ngIf="currentDisplay === 'pages'">First Page</span>
         <span *ngIf="currentDisplay === 'diagrams'">First Diagram</span>
-        <span *ngIf="currentDisplay === 'fxmls'">First Fxml</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="previousPage()">
         <span *ngIf="currentDisplay === 'pages'">Previous Page</span>
         <span *ngIf="currentDisplay === 'diagrams'">Previous Diagram</span>
-        <span *ngIf="currentDisplay === 'fxmls'">Previous Fxml</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="nextPage()">
         <span *ngIf="currentDisplay === 'pages'">Next Page</span>
         <span *ngIf="currentDisplay === 'diagrams'">Next Diagram</span>
-        <span *ngIf="currentDisplay === 'fxmls'">Next Fxml</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
               (click)="setLastPage()">
         <span *ngIf="currentDisplay === 'pages'">Last Page</span>
         <span *ngIf="currentDisplay === 'diagrams'">Last Diagram</span>
-        <span *ngIf="currentDisplay === 'fxmls'">Last Fxml</span>
       </button>
     </div>
   </div>
