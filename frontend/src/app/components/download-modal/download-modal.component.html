@@ -17,6 +17,14 @@
         <input type="checkbox" class="form-check-input" id="pagesCheck" [(ngModel)]="exportOptions.exportPages">
         <label class="form-check-label" for="pagesCheck">Mockups</label>
       </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="digramsCheck" [(ngModel)]="exportOptions.exportDiagrams">
+        <label class="form-check-label" for="digramsCheck">Diagrams</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="fxmlsCheck" [(ngModel)]="exportOptions.exportFxmls">
+        <label class="form-check-label" for="fxmlsCheck">Fxmls</label>
+      </div>
       <div class="row">
         <button type="button" class="btn btn-outline-secondary m-1" (click)="deselectAll()">Deselect All</button>
         <button type="button" class="btn btn-outline-success m-1" (click)="selectAll()">Select All</button>

@@ -84,6 +84,7 @@ export class AppComponent {
       (answer: GenerateResult) => {
         const pages = createMapFromAnswer(answer.pages, answer.numberOfPages);
         const diagrams = createMapFromAnswer(answer.diagrams, answer.numberOfDiagrams);
+        const fxmls = createMapFromAnswer(answer.fxmls, answer.numberOfFxmls);
 
         this.generateResult = {
           board: answer.board,
@@ -91,6 +92,8 @@ export class AppComponent {
           numberOfPages: answer.numberOfPages,
           diagrams: diagrams,
           numberOfDiagrams: answer.numberOfDiagrams,
+          fxmls: fxmls,
+          numberOfFxmls: answer.numberOfFxmls,
         };
       }
     );

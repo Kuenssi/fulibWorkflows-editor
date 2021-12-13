@@ -4,4 +4,6 @@ export interface GenerateResult {
   numberOfPages: number,
   diagrams: Map<number, string>,
   numberOfDiagrams: number,
+  fxmls: Map<number, string>,
+  numberOfFxmls: number,
 }

@@ -61,6 +61,28 @@ public class FulibWorkflowsService {
                 }
             }
 
+            // Diagram Directory
+            if (queryParams.get("exportDiagrams").equals("true")) {
+                zipOutputStream.putNextEntry(new ZipEntry("diagrams/"));
+
+                // Diagram files
+                for (int i = 1; i <= generateResult.getNumberOfDiagrams(); i++) {
+                    String fileName = "diagrams/" + i + "_diagram.svg";
+                    createZipEntry(zipOutputStream, fileName, generateResult.getDiagrams().get(i));
+                }
+            }
+
+            // Fxml Directory
+            if (queryParams.get("exportFxml").equals("true")) {
+                zipOutputStream.putNextEntry(new ZipEntry("fxmls/"));
+
+                // Diagram files
+                for (int i = 1; i <= generateResult.getNumberOfFxmls(); i++) {
+                    String fileName = "fxmls/" + i + "_fxml.fxml";
+                    createZipEntry(zipOutputStream, fileName, generateResult.getFxmls().get(i));
+                }
+            }
+
             zipOutputStream.finish();
             zipOutputStream.flush();
             zipOutputStream.close();
@@ -89,11 +111,23 @@ public class FulibWorkflowsService {
 
         Map<String, String> htmls = boardGenerator.generateAndReturnHTMLs(yamlData);
 
+        // Add Board
         generateResult.setBoard(getBoardResult(htmls));
 
-        generateResult.setPages(getPagesResult(htmls));
+        // Add Pages
+        generateResult.setPages(getMultipleViews(htmls, "page"));
 
         generateResult.setNumberOfPages(generateResult.getPages().size());
+
+        // Add Diagrams
+        generateResult.setDiagrams(getMultipleViews(htmls, "diagram"));
+
+        generateResult.setNumberOfDiagrams(generateResult.getDiagrams().size());
+
+        // Add fxmls
+        generateResult.setFxmls(getMultipleViews(htmls, "fxml"));
+
+        generateResult.setNumberOfFxmls(generateResult.getFxmls().size());
 
         return generateResult;
     }
@@ -107,13 +141,13 @@ public class FulibWorkflowsService {
         return "Nothing found";
     }
 
-    private Map<Integer, String> getPagesResult(Map<String, String> htmls) {
+    private Map<Integer, String> getMultipleViews(Map<String, String> views, String type) {
         Map<Integer, String> result = new HashMap<>();
 
-        for (String key : htmls.keySet()) {
-            if (key.contains("_")) {
+        for (String key : views.keySet()) {
+            if (key.contains(type)) {
                 int index = Integer.parseInt(key.substring(0, key.indexOf("_")));
-                result.put(index + 1, htmls.get(key));
+                result.put(index + 1, views.get(key));
             }
         }
 

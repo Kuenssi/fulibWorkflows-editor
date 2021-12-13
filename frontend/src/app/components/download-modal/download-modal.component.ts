@@ -20,6 +20,8 @@ export class DownloadModalComponent {
     exportYaml: false,
     exportBoard: true,
     exportPages: false,
+    exportDiagrams: false,
+    exportFxmls: false,
   };
 
   constructor(private modalService: NgbModal,
@@ -40,6 +42,8 @@ export class DownloadModalComponent {
       exportYaml: true,
       exportBoard: true,
       exportPages: true,
+      exportDiagrams: true,
+      exportFxmls: true,
     };
   }
 
@@ -48,6 +52,8 @@ export class DownloadModalComponent {
       exportYaml: false,
       exportBoard: false,
       exportPages: false,
+      exportDiagrams: false,
+      exportFxmls: false,
     };
   }
 }

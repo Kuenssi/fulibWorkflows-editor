@@ -8,6 +8,8 @@ public class GenerateResult {
     private int numberOfPages;
     private Map<Integer, String> diagrams;
     private int numberOfDiagrams;
+    private Map<Integer, String> fxmls;
+    private int numberOfFxmls;
 
     public String getBoard() {
         return board;
@@ -47,5 +49,21 @@ public class GenerateResult {
 
     public void setNumberOfDiagrams(int numberOfDiagrams) {
         this.numberOfDiagrams = numberOfDiagrams;
+    }
+
+    public int getNumberOfFxmls() {
+        return numberOfFxmls;
+    }
+
+    public void setNumberOfFxmls(int numberOfFxmls) {
+        this.numberOfFxmls = numberOfFxmls;
+    }
+
+    public Map<Integer, String> getFxmls() {
+        return fxmls;
+    }
+
+    public void setFxmls(Map<Integer, String> fxmls) {
+        this.fxmls = fxmls;
     }
 }
