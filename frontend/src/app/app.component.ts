@@ -26,7 +26,7 @@ export class AppComponent {
 
   public showIframeHider = false;
   public newPageIndex!: number;
-  public currentDisplay: 'pages' | 'diagrams' = 'pages';
+  public currentDisplay: 'pages' | 'diagrams' | 'fxmls' = 'pages';
   public currentCodemirrorTheme: 'eclipse' | 'darcula' = 'eclipse';
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,

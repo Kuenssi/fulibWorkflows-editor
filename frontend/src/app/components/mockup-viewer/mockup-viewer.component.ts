@@ -10,7 +10,7 @@ import {GenerateResult} from '../../core/model/GenerateResult';
 export class MockupViewerComponent {
   @Input() generateResult!: GenerateResult;
   @Input() index!: number | undefined;
-  @Input() currentDisplay!: 'pages' | 'diagrams';
+  @Input() currentDisplay!: 'pages' | 'diagrams' | 'fxmls';
 
   public currentPageIndex = 1;
 
@@ -29,6 +29,9 @@ export class MockupViewerComponent {
         break;
       case 'diagrams':
         result = this.getCurrentContent(this.generateResult.diagrams);
+        break;
+      case 'fxmls':
+        result = this.getCurrentContent(this.generateResult.fxmls);
         break;
       default:
         result = '';

@@ -33,4 +33,5 @@ export const allNotesExample =
   '    - password: Password\n' +
   '    - button: Login\n' +
   '\n' +
-  '- problem: This part is very risky';
+  '- problem: This part is very risky\n' +
+  '\n';
