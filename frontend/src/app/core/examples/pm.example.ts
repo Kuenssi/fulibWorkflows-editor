@@ -43,4 +43,5 @@ export const pmExample =
   '    prev.back: [next]\n' +
   '\n' +
   '- data: Student carli\n' +
-  '    route: math -> calculus -> math -> modeling -> exam\n';
+  '    route: math -> calculus -> math -> modeling -> exam\n' +
+  '\n';
