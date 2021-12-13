@@ -5,11 +5,11 @@ import java.util.Map;
 public class GenerateResult {
     private String board;
     private Map<Integer, String> pages;
-    private int numberOfPages;
+    private int numberOfPages = 0;
     private Map<Integer, String> diagrams;
-    private int numberOfDiagrams;
+    private int numberOfDiagrams = 0;
     private Map<Integer, String> fxmls;
-    private int numberOfFxmls;
+    private int numberOfFxmls = 0;
 
     public String getBoard() {
         return board;
