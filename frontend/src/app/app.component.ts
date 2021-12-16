@@ -47,7 +47,7 @@ export class AppComponent {
     };
 
     // https://stackoverflow.com/questions/41616112/calling-components-function-from-iframe
-    (<any>window).setPageFromIframe = this.setPageFromIframe.bind(this);
+    (<any>window).setIndexFromIframe = this.setIndexFromIframe.bind(this);
     (<any>window).showToast = this.showToast.bind(this);
   }
 
@@ -100,7 +100,7 @@ export class AppComponent {
     );
   }
 
-  setPageFromIframe(index: number) {
+  setIndexFromIframe(index: number) {
     // It needs to be run in the NgZone because only then angular change detection gets a grip on the change
     this.zone.run(() =>
       this.newPageIndex = index + 1); // +1 because map is 1 based and the generated fulibWorkflows is 0 based right now
