@@ -10,6 +10,7 @@ public class GenerateResult {
     private int numberOfDiagrams = 0;
     private Map<Integer, String> fxmls;
     private int numberOfFxmls = 0;
+    private String classDiagram;
 
     public String getBoard() {
         return board;
@@ -65,5 +66,13 @@ public class GenerateResult {
 
     public void setFxmls(Map<Integer, String> fxmls) {
         this.fxmls = fxmls;
+    }
+
+    public String getClassDiagram() {
+        return classDiagram;
+    }
+
+    public void setClassDiagram(String classDiagram) {
+        this.classDiagram = classDiagram;
     }
 }

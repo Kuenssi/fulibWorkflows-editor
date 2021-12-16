@@ -62,7 +62,7 @@ public class FulibWorkflowsService {
             }
 
             // Diagram Directory
-            if (queryParams.get("exportDiagrams").equals("true") && generateResult.getNumberOfDiagrams() > 0) {
+            if (queryParams.get("exportObjects").equals("true") && generateResult.getNumberOfDiagrams() > 0) {
                 zipOutputStream.putNextEntry(new ZipEntry("diagrams/"));
 
                 // Diagram files
@@ -70,6 +70,11 @@ public class FulibWorkflowsService {
                     String fileName = "diagrams/" + i + "_diagram.svg";
                     createZipEntry(zipOutputStream, fileName, generateResult.getDiagrams().get(i));
                 }
+            }
+
+            // Class Directory
+            if (queryParams.get("exportClass").equals("true") && generateResult.getClassDiagram() != null) {
+                createZipEntry(zipOutputStream, "class/classdiagram.svg", generateResult.getClassDiagram());
             }
 
             // Fxml Directory
@@ -112,17 +117,20 @@ public class FulibWorkflowsService {
         Map<String, String> htmls = boardGenerator.generateAndReturnHTMLs(yamlData);
 
         // Add Board
-        generateResult.setBoard(getBoardResult(htmls));
+        generateResult.setBoard(getSingleView(htmls, "Board"));
 
         // Add Pages
         generateResult.setPages(getMultipleViews(htmls, "page"));
 
         generateResult.setNumberOfPages(generateResult.getPages().size());
 
-        // Add Diagrams
+        // Add Objects
         generateResult.setDiagrams(getMultipleViews(htmls, "diagram"));
 
         generateResult.setNumberOfDiagrams(generateResult.getDiagrams().size());
+
+        // Add Class
+        generateResult.setClassDiagram(getSingleView(htmls, "class"));
 
         // Add fxmls
         generateResult.setFxmls(getMultipleViews(htmls, "fxml"));
@@ -132,9 +140,9 @@ public class FulibWorkflowsService {
         return generateResult;
     }
 
-    private String getBoardResult(Map<String, String> htmls) {
+    private String getSingleView(Map<String, String> htmls, String type) {
         for (String key : htmls.keySet()) {
-            if (key.contains("Board")) {
+            if (key.contains(type)) {
                 return htmls.get(key);
             }
         }
