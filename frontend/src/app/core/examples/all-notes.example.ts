@@ -1,7 +1,7 @@
 export const allNotesExample =
   '- workflow: Testerino\n' +
   '\n' +
-  '- externalSystem: höhöhöhö\n' +
+  '- externalSystem: hohohohoho\n' +
   '\n' +
   '- service: TestinService\n' +
   '\n' +
@@ -12,7 +12,6 @@ export const allNotesExample =
   '  gasdfwad: asfasd\n' +
   '  wadasda: wadsdw\n' +
   '  wadfasgfaqs: asdagdg\n' +
-  '  Wbgsdfaa: adawdas\n' +
   '\n' +
   '- policy: start do something process\n' +
   '\n' +
@@ -22,14 +21,17 @@ export const allNotesExample =
   '  lecture: string\n' +
   '  students: int\n' +
   '\n' +
-  '- data: wambologieClass\n' +
+  '- data: Wambo wambologieClass\n' +
   '  lecture: wambo\n' +
   '  studentes: 31\n' +
+  '\n' +
+  '\n' +
+  '\n' +
   '\n' +
   '- page:\n' +
   '    - name: Testerino\n' +
   '    - text: This is a test page\n' +
-  '    - input: E-Mail\n' +
+  '    - input: E Mail\n' +
   '    - password: Password\n' +
   '    - button: Login\n' +
   '\n' +
