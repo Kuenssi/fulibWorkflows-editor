@@ -34,7 +34,6 @@ export const pmExample =
   '  neighbors: [r1, r2, r4]\n' +
   '\n' +
   '- command: findRoute\n' +
-  '  student: carli\n' +
   '\n' +
   '- data: Stop stop2\n' +
   '  room: calculus\n' +
@@ -43,5 +42,5 @@ export const pmExample =
   '  prev.back: [next]\n' +
   '\n' +
   '- data: Student carli\n' +
-  '  route: math -> calculus -> math -> modeling -> exam\n' +
+  '  route: math > calculus > math > modeling > exam\n' +
   '\n';

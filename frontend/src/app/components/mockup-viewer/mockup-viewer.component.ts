@@ -38,14 +38,6 @@ export class MockupViewerComponent {
     return result;
   }
 
-  pagesReady(): boolean {
-    if (!this.generateResult || !this.generateResult.pages) {
-      return false;
-    }
-
-    return this.generateResult.pages.size > 0;
-  }
-
   nextPage() {
     if (!this.generateResult) {
       return;
