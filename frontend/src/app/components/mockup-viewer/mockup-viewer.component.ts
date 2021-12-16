@@ -12,7 +12,8 @@ export class MockupViewerComponent {
   @Input() index!: number | undefined;
   @Input() currentDisplay!: 'pages' | 'objects' | 'class';
 
-  public currentPageIndex = 1;
+  public currentIndex = 1;
+  private maxIndex!: number;
 
   constructor() {
   }
@@ -25,12 +26,25 @@ export class MockupViewerComponent {
     let result;
     switch (this.currentDisplay) {
       case 'pages':
+        this.maxIndex = this.generateResult.numberOfPages;
+
+        if (this.maxIndex && this.currentIndex > this.maxIndex) {
+          this.currentIndex = this.maxIndex;
+        }
+
         result = this.getCurrentContent(this.generateResult.pages);
         break;
       case 'objects':
+        this.maxIndex = this.generateResult.numberOfDiagrams;
+
+        if (this.maxIndex && this.currentIndex > this.maxIndex) {
+          this.currentIndex = this.maxIndex;
+        }
+
         result = this.getCurrentContent(this.generateResult.diagrams);
         break;
       case 'class':
+        this.currentIndex = 1;
         result = this.generateResult.classDiagram;
         break;
       default:
@@ -41,36 +55,36 @@ export class MockupViewerComponent {
     return result;
   }
 
-  nextPage() {
+  next() {
     if (!this.generateResult) {
       return;
     }
 
-    if (this.currentPageIndex === this.generateResult.numberOfPages) {
+    if (this.currentIndex === this.maxIndex) {
       return;
     }
 
-    this.currentPageIndex += 1;
+    this.currentIndex += 1;
   }
 
-  previousPage() {
+  previous() {
     if (!this.generateResult) {
       return;
     }
 
-    if (this.currentPageIndex === 1) {
+    if (this.currentIndex === 1) {
       return;
     }
 
-    this.currentPageIndex -= 1;
+    this.currentIndex -= 1;
   }
 
-  setFirstPage() {
-    this.currentPageIndex = 1;
+  setFirst() {
+    this.currentIndex = 1;
   }
 
-  setLastPage() {
-    this.currentPageIndex = this.generateResult.numberOfPages;
+  setLast() {
+    this.currentIndex = this.maxIndex;
   }
 
   private getCurrentContent(generateMap: Map<number, string>): string {
@@ -79,11 +93,11 @@ export class MockupViewerComponent {
     }
 
     if (this.index) {
-      this.currentPageIndex = this.index;
+      this.currentIndex = this.index;
       this.index = undefined;
     }
 
-    const currentContent = generateMap.get(this.currentPageIndex);
+    const currentContent = generateMap.get(this.currentIndex);
 
     if (!currentContent) {
       return '';

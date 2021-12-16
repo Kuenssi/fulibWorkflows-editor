@@ -2,22 +2,22 @@
   <div>
     <div *ngIf="currentDisplay !== 'class'" class="d-grid d-md-block">
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="setFirstPage()">
+              (click)="setFirst()">
         <span *ngIf="currentDisplay === 'pages'">First Page</span>
         <span *ngIf="currentDisplay === 'objects'">First Diagram</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="previousPage()">
+              (click)="previous()">
         <span *ngIf="currentDisplay === 'pages'">Previous Page</span>
         <span *ngIf="currentDisplay === 'objects'">Previous Diagram</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="nextPage()">
+              (click)="next()">
         <span *ngIf="currentDisplay === 'pages'">Next Page</span>
         <span *ngIf="currentDisplay === 'objects'">Next Diagram</span>
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="setLastPage()">
+              (click)="setLast()">
         <span *ngIf="currentDisplay === 'pages'">Last Page</span>
         <span *ngIf="currentDisplay === 'objects'">Last Diagram</span>
       </button>
