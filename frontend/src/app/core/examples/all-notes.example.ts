@@ -17,10 +17,6 @@ export const allNotesExample =
   '\n' +
   '- user: Bob\n' +
   '\n' +
-  '- class: Wambo\n' +
-  '  lecture: string\n' +
-  '  students: int\n' +
-  '\n' +
   '- data: Wambo wambologieClass\n' +
   '  lecture: wambo\n' +
   '  studentes: 31\n' +
