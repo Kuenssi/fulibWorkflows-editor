@@ -13,11 +13,8 @@ repositories {
 }
 
 dependencies {
-    // TODO This is just for the fulibWorkflows development
-    implementation project(":fulibWorkflows")
-
     // https://mvnrepository.com/artifact/org.fulib/fulibWorkflows
-    //	implementation group: 'org.fulib', name: 'fulibWorkflows', version: '0.2.0'
+    implementation group: 'org.fulib', name: 'fulibWorkflows', version: '0.3.0'
 
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
