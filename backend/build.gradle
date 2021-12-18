@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'de.uniks'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.0'
 sourceCompatibility = '17'
 
 repositories {
@@ -23,3 +23,6 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
