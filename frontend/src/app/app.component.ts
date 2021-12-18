@@ -44,6 +44,7 @@ export class AppComponent {
         'Ctrl-S': generateHandler,
       },
       autofocus: true,
+      tabSize: 2,
     };
 
     // https://stackoverflow.com/questions/41616112/calling-components-function-from-iframe
@@ -76,7 +77,9 @@ export class AppComponent {
         console.log('Unknown example');
     }
     this.content = newContent;
-    this.generate();
+    if (this.currentExampleDesc !== 'Empty workflow') {
+      this.generate();
+    }
   }
 
   generate() {

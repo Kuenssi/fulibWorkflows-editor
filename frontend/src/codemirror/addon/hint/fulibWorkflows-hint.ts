@@ -1,6 +1,6 @@
 import * as CodeMirror from 'codemirror';
 
-const noteKeywords = ['workflow', 'externalSystem', 'service', 'command', 'event', 'policy', 'user', 'class', 'data', 'page'];
+const noteKeywords = ['workflow', 'externalSystem', 'service', 'command', 'event', 'policy', 'user', 'data', 'page', 'problem'];
 const pageKeywords = ['name', 'text', 'input', 'password', 'button']
 
 // @ts-ignore
@@ -13,17 +13,17 @@ CodeMirror.registerHelper('hint', 'fulibWorkflows', (cm) => {
   // Get Current Word
   const word = cm.getRange(range.anchor, range.head);
 
-  // TODO Check context
-
-  // TODO Check if `- ` needed
-
-  // TODO Check if `: ` needed
-
   // Filter Keywords for possible completions for the current word
   const result: string[] = [];
   for (const noteKeyword of noteKeywords) {
     if (!word || word === ' ' || noteKeyword.indexOf(word) === 0) {
       result.push(noteKeyword);
+    }
+  }
+
+  for (const pageKeyword of pageKeywords) {
+    if (!word || word === ' ' || pageKeyword.indexOf(word) === 0) {
+      result.push(pageKeyword);
     }
   }
 
