@@ -20,7 +20,8 @@ export class DownloadModalComponent {
     exportYaml: false,
     exportBoard: true,
     exportPages: false,
-    exportDiagrams: false,
+    exportObjects: false,
+    exportClass: false,
     exportFxmls: false,
   };
 
@@ -42,7 +43,8 @@ export class DownloadModalComponent {
       exportYaml: true,
       exportBoard: true,
       exportPages: true,
-      exportDiagrams: true,
+      exportObjects: true,
+      exportClass: true,
       exportFxmls: true,
     };
   }
@@ -52,7 +54,8 @@ export class DownloadModalComponent {
       exportYaml: false,
       exportBoard: false,
       exportPages: false,
-      exportDiagrams: false,
+      exportObjects: false,
+      exportClass: false,
       exportFxmls: false,
     };
   }

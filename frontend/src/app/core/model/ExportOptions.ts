@@ -2,6 +2,7 @@ export interface ExportOptions {
   exportYaml: boolean,
   exportBoard: boolean,
   exportPages: boolean,
-  exportDiagrams: boolean,
+  exportObjects: boolean,
+  exportClass: boolean,
   exportFxmls: boolean,
 }

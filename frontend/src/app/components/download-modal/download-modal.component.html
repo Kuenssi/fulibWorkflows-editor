@@ -15,11 +15,15 @@
       </div>
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="pagesCheck" [(ngModel)]="exportOptions.exportPages">
-        <label class="form-check-label" for="pagesCheck">Mockups</label>
+        <label class="form-check-label" for="pagesCheck">Pages</label>
       </div>
       <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="digramsCheck" [(ngModel)]="exportOptions.exportDiagrams">
-        <label class="form-check-label" for="digramsCheck">Diagrams</label>
+        <input type="checkbox" class="form-check-input" id="objectsCheck" [(ngModel)]="exportOptions.exportObjects">
+        <label class="form-check-label" for="objectsCheck">Objects</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="classCheck" [(ngModel)]="exportOptions.exportObjects">
+        <label class="form-check-label" for="classCheck">Class</label>
       </div>
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="fxmlsCheck" [(ngModel)]="exportOptions.exportFxmls">

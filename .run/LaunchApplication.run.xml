@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="LaunchApplication" type="CompoundRunConfigurationType">
-    <toRun name="BackendApplication" type="SpringBootApplicationConfigurationType" />
     <toRun name="Angular CLI Server" type="js.build_tools.npm" />
+    <toRun name="BackendApplication" type="SpringBootApplicationConfigurationType" />
     <method v="2" />
   </configuration>
 </component>
