@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "node server.js",
+    "start:dev": "ng serve --open",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -25,6 +26,7 @@
     "bootstrap": "^4.6.1",
     "bootstrap-icons": "^1.7.1",
     "codemirror": "^5.64.0",
+    "express": "^4.17.2",
     "file-saver": "^2.0.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
