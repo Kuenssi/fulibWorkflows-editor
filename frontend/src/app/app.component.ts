@@ -1,4 +1,4 @@
-import {Component, NgZone, ViewChild} from '@angular/core';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 
 import {IOutputData, SplitComponent} from 'angular-split';
 import {ToastService} from './core/services/toast.service';
@@ -6,20 +6,23 @@ import {GenerateResult} from './core/model/GenerateResult';
 import {createMapFromAnswer} from './core/helper/map.helper';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {allNotesExample, msExample, newWorkflowExample, pagesExample, pmExample} from './core/examples';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  @ViewChild('split') split!: SplitComponent
+export class AppComponent implements OnInit {
+  @ViewChild('split') split!: SplitComponent;
 
   //Codemirror
   public content!: any;
   public codemirrorOptions: any;
 
   public generateResult!: GenerateResult;
+
+  public version!: string;
 
   public currentExampleDesc: string = 'Select example';
   public examplesList = ['Empty workflow', 'All Notes', 'Data Modelling', 'Microservices', 'Pages'];
@@ -50,6 +53,10 @@ export class AppComponent {
     // https://stackoverflow.com/questions/41616112/calling-components-function-from-iframe
     (<any>window).setIndexFromIframe = this.setIndexFromIframe.bind(this);
     (<any>window).showToast = this.showToast.bind(this);
+  }
+
+  ngOnInit() {
+    this.version = environment.version;
   }
 
   changeExampleContent(index: number) {
