@@ -1,12 +1,12 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 
+import {environment} from '../environments/environment';
 import {IOutputData, SplitComponent} from 'angular-split';
 import {ToastService} from './core/services/toast.service';
 import {GenerateResult} from './core/model/GenerateResult';
 import {createMapFromAnswer} from './core/helper/map.helper';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {allNotesExample, msExample, newWorkflowExample, pagesExample, pmExample} from './core/examples';
-import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -81,7 +81,8 @@ export class AppComponent implements OnInit {
         newContent = pagesExample;
         break;
       default:
-        console.log('Unknown example');
+        newContent = newWorkflowExample;
+        this.toastService.show('Unknown Example. Using new workflow template');
     }
     this.content = newContent;
     if (this.currentExampleDesc !== 'Empty workflow') {
@@ -90,6 +91,8 @@ export class AppComponent implements OnInit {
   }
 
   generate() {
+    this.checkForEOF();
+
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer: GenerateResult) => {
         const pages = createMapFromAnswer(answer.pages, answer.numberOfPages);
@@ -140,5 +143,13 @@ export class AppComponent implements OnInit {
 
   changeTheme(theme: string) {
     this.codemirrorOptions.theme = theme;
+  }
+
+  private checkForEOF() {
+    const content: string = this.content;
+
+    if (!content.endsWith('\n')) {
+      this.content += '\n';
+    }
   }
 }
