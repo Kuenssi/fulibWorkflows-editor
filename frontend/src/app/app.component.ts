@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   public showIframeHider = false;
   public newPageIndex!: number;
   public currentDisplay: 'pages' | 'objects' | 'class' = 'pages';
-  public currentCodemirrorTheme: 'eclipse' | 'darcula' = 'eclipse';
+  public currentCodemirrorTheme: 'idea' | 'material' = 'idea';
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
               public toastService: ToastService,
