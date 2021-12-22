@@ -10,7 +10,7 @@ import {ToastService} from '../../core/services/toast.service';
 export class ToastsComponent {
   public toastService!: ToastService;
 
-  constructor(toastr: ToastService) {
-    this.toastService = toastr;
+  constructor(toaster: ToastService) {
+    this.toastService = toaster;
   }
 }

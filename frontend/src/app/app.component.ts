@@ -168,12 +168,30 @@ export class AppComponent implements OnInit {
   private evaluateErrorMessage(): string {
     const errors = this.validate.errors;
 
-    let result: string = '';
+    let result: string = 'Description: \n';
+
+    // Wrong Item Index
+    let index = errors[0].instancePath;
 
     console.log(errors);
 
+    // Cleanup Index
+    index = index.replace("/", "")
+
+    result += 'Error at entry: ' + index + '\n';
+
+    // Evaluate correct error
     for (const error of errors) {
-      // TODO
+      if (error.keyword !== 'required') {
+        const elementReference = error.params.additionalProperty;
+
+        if (elementReference) {
+          result += 'Wrong element: "' + elementReference + '"\n';
+        }
+
+        result += error.message;
+        break;
+      }
     }
 
     return result;

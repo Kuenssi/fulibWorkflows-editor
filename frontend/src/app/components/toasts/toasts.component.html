@@ -5,7 +5,7 @@
     <div class="card-body">
       <h5 *ngIf="toast.type === 'success'" class="card-title">Page Action</h5>
       <h5 *ngIf="toast.type === 'error'" class="card-title">Lint Error</h5>
-      <p class="card-text">{{toast.textOrTpl}}</p>
+      <p class="card-text" style="white-space: pre-line">{{toast.textOrTpl}}</p>
     </div>
   </div>
 </ngb-toast>
