@@ -1,6 +1,11 @@
 <ngb-toast *ngFor="let toast of toastService.toasts"
-           [class]="toast.classname"
            [header]="toast.header" [autohide]="true" [delay]="toast.delay || 5000"
            (hidden)="toastService.remove(toast)">
-  {{toast.textOrTpl}}
+  <div [class]="toast.classname">
+    <div class="card-body">
+      <h5 *ngIf="toast.type === 'success'" class="card-title">Page Action</h5>
+      <h5 *ngIf="toast.type === 'error'" class="card-title">Lint Error</h5>
+      <p class="card-text">{{toast.textOrTpl}}</p>
+    </div>
+  </div>
 </ngb-toast>

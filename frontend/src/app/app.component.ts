@@ -104,8 +104,8 @@ export class AppComponent implements OnInit {
     const validYaml = this.yamlHelper.lintYamlString(this.content);
 
     if (!validYaml) {
-      this.toastService.show('You fool', {classname: 'bg-danger'});
-      console.log(this.validate.errors);
+      const errorMessage = this.evaluateErrorMessage();
+      this.toastService.show(errorMessage, {classname: 'card bg-danger text-light', delay: 20000, type: 'error'});
       return;
     }
 
@@ -153,7 +153,7 @@ export class AppComponent implements OnInit {
 
   showToast(toastContent: string) {
     this.zone.run(() => {
-      this.toastService.show(toastContent, {classname: 'bg-success text-light'});
+      this.toastService.show(toastContent, {classname: 'card bg-success text-light', type: 'success'});
     });
   }
 
@@ -162,6 +162,20 @@ export class AppComponent implements OnInit {
   }
 
   openDocs() {
-    window.open('https://fujaba.github.io/fulibWorkflows/', '_blank')
+    window.open('https://fujaba.github.io/fulibWorkflows/docs/definitions/', '_blank')
+  }
+
+  private evaluateErrorMessage(): string {
+    const errors = this.validate.errors;
+
+    let result: string = '';
+
+    console.log(errors);
+
+    for (const error of errors) {
+      // TODO
+    }
+
+    return result;
   }
 }
