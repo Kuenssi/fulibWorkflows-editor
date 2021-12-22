@@ -181,7 +181,8 @@ export const workflowsSchema =
           },
           "required": [
             "problem"
-          ]
+          ],
+          "additionalProperties": false
         }
       ]
     }
