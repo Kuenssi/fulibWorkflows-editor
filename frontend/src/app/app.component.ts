@@ -173,8 +173,6 @@ export class AppComponent implements OnInit {
     // Wrong Item Index
     let index = errors[0].instancePath;
 
-    console.log(errors);
-
     // Cleanup Index
     index = index.replace("/", "")
 
