@@ -1,5 +1,7 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 
+import Ajv from 'ajv';
+import * as Yaml from 'js-yaml';
 import {environment} from '../environments/environment';
 import {IOutputData, SplitComponent} from 'angular-split';
 import {ToastService} from './core/services/toast.service';
@@ -16,7 +18,7 @@ import {allNotesExample, msExample, newWorkflowExample, pagesExample, pmExample}
 export class AppComponent implements OnInit {
   @ViewChild('split') split!: SplitComponent;
 
-  //Codemirror
+  // Codemirror
   public content!: any;
   public codemirrorOptions: any;
 
@@ -31,6 +33,8 @@ export class AppComponent implements OnInit {
   public newPageIndex!: number;
   public currentDisplay: 'pages' | 'objects' | 'class' = 'pages';
   public currentCodemirrorTheme: 'idea' | 'material' = 'idea';
+
+  private ajv!: Ajv;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
               public toastService: ToastService,
@@ -57,6 +61,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.version = environment.version;
+    this.ajv = new Ajv();
   }
 
   changeExampleContent(index: number) {
@@ -92,6 +97,12 @@ export class AppComponent implements OnInit {
 
   generate() {
     this.checkForEOF();
+
+    const validYaml = this.lintYaml();
+
+    if (!validYaml) {
+      return;
+    }
 
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer: GenerateResult) => {
@@ -151,5 +162,153 @@ export class AppComponent implements OnInit {
     if (!content.endsWith('\n')) {
       this.content += '\n';
     }
+  }
+
+  private lintYaml(): boolean {
+    const schema = AppComponent.getSchema();
+    const validate = this.ajv.compile(schema);
+    this.content = this.content.replace(/\t/g, '  ');
+    const yamlContent = Yaml.load(this.content);
+    console.log(yamlContent);
+    const valid = validate(yamlContent);
+
+    if (valid) {
+      return valid;
+    } else {
+      this.toastService.show('You fool', {classname: 'bg-danger'});
+      console.log(validate.errors);
+      return valid;
+    }
+  }
+
+  private static getSchema() {
+    return {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "workflow": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "workflow"
+            ],
+            "additionalProperties": false
+          },
+          {
+
+            "type": "object",
+            "properties": {
+              "externalSystem": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "externalSystem"
+            ],
+            "additionalProperties": false
+
+          },
+          {
+
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "service"
+            ],
+            "additionalProperties": false
+
+          },
+          {
+
+            "type": "object",
+            "properties": {
+              "command": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "additionalProperties": false
+
+          },
+          {
+
+            "type": "object",
+            "properties": {
+              "event": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "event"
+            ]
+
+          },
+          {
+
+            "type": "object",
+            "properties": {
+              "policy": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "policy"
+            ],
+            "additionalProperties": false
+
+          },
+          {
+
+            "type": "object",
+            "properties": {
+              "user": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "user"
+            ],
+            "additionalProperties": false
+
+          },
+          {
+
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ]
+          },
+
+          {
+
+            "type": "object",
+            "properties": {
+              "problem": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "problem"
+            ]
+
+          }
+        ]
+      }
+    };
   }
 }
