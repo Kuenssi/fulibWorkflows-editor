@@ -1,12 +1,13 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 
 import Ajv from 'ajv';
-import * as Yaml from 'js-yaml';
+import {YamlHelper} from './core/helper/yaml.helper';
 import {environment} from '../environments/environment';
 import {IOutputData, SplitComponent} from 'angular-split';
 import {ToastService} from './core/services/toast.service';
 import {GenerateResult} from './core/model/GenerateResult';
 import {createMapFromAnswer} from './core/helper/map.helper';
+import {workflowsSchema} from './core/helper/workflows.schema';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
 import {allNotesExample, msExample, newWorkflowExample, pagesExample, pmExample} from './core/examples';
 
@@ -35,6 +36,8 @@ export class AppComponent implements OnInit {
   public currentCodemirrorTheme: 'idea' | 'material' = 'idea';
 
   private ajv!: Ajv;
+  private validate!: any;
+  private yamlHelper!: YamlHelper;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
               public toastService: ToastService,
@@ -62,6 +65,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.version = environment.version;
     this.ajv = new Ajv();
+    this.validate = this.ajv.compile(workflowsSchema);
+    this.yamlHelper = new YamlHelper(this.ajv, this.validate);
   }
 
   changeExampleContent(index: number) {
@@ -87,7 +92,7 @@ export class AppComponent implements OnInit {
         break;
       default:
         newContent = newWorkflowExample;
-        this.toastService.show('Unknown Example. Using new workflow template');
+        this.toastService.show('Unknown Example. Using new workflow template', {classname: 'bg-warning'});
     }
     this.content = newContent;
     if (this.currentExampleDesc !== 'Empty workflow') {
@@ -96,11 +101,11 @@ export class AppComponent implements OnInit {
   }
 
   generate() {
-    this.checkForEOF();
-
-    const validYaml = this.lintYaml();
+    const validYaml = this.yamlHelper.lintYamlString(this.content);
 
     if (!validYaml) {
+      this.toastService.show('You fool', {classname: 'bg-danger'});
+      console.log(this.validate.errors);
       return;
     }
 
@@ -154,161 +159,5 @@ export class AppComponent implements OnInit {
 
   changeTheme(theme: string) {
     this.codemirrorOptions.theme = theme;
-  }
-
-  private checkForEOF() {
-    const content: string = this.content;
-
-    if (!content.endsWith('\n')) {
-      this.content += '\n';
-    }
-  }
-
-  private lintYaml(): boolean {
-    const schema = AppComponent.getSchema();
-    const validate = this.ajv.compile(schema);
-    this.content = this.content.replace(/\t/g, '  ');
-    const yamlContent = Yaml.load(this.content);
-    console.log(yamlContent);
-    const valid = validate(yamlContent);
-
-    if (valid) {
-      return valid;
-    } else {
-      this.toastService.show('You fool', {classname: 'bg-danger'});
-      console.log(validate.errors);
-      return valid;
-    }
-  }
-
-  private static getSchema() {
-    return {
-      "type": "array",
-      "items": {
-        "oneOf": [
-          {
-            "type": "object",
-            "properties": {
-              "workflow": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "workflow"
-            ],
-            "additionalProperties": false
-          },
-          {
-
-            "type": "object",
-            "properties": {
-              "externalSystem": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "externalSystem"
-            ],
-            "additionalProperties": false
-
-          },
-          {
-
-            "type": "object",
-            "properties": {
-              "service": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "service"
-            ],
-            "additionalProperties": false
-
-          },
-          {
-
-            "type": "object",
-            "properties": {
-              "command": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "command"
-            ],
-            "additionalProperties": false
-
-          },
-          {
-
-            "type": "object",
-            "properties": {
-              "event": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "event"
-            ]
-
-          },
-          {
-
-            "type": "object",
-            "properties": {
-              "policy": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "policy"
-            ],
-            "additionalProperties": false
-
-          },
-          {
-
-            "type": "object",
-            "properties": {
-              "user": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "user"
-            ],
-            "additionalProperties": false
-
-          },
-          {
-
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "data"
-            ]
-          },
-
-          {
-
-            "type": "object",
-            "properties": {
-              "problem": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "problem"
-            ]
-
-          }
-        ]
-      }
-    };
   }
 }
