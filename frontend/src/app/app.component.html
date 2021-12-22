@@ -40,11 +40,13 @@
     <ul class="nav justify-content-end" style="margin-right: 10px">
       <li class="nav-item mr-md-3">
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentCodemirrorTheme">
-          <label ngbButtonLabel class="btn btn-light">
+          <label ngbButtonLabel class="btn btn-light"
+                 placement="bottom" ngbTooltip="CM Light">
             <input ngbButton type="radio" [value]="'idea'" (click)="changeTheme('idea')">
             <i class="bi bi-sun"></i>
           </label>
-          <label ngbButtonLabel class="btn btn-dark">
+          <label ngbButtonLabel class="btn btn-dark"
+                 placement="bottom" ngbTooltip="CM Dark">
             <input ngbButton type="radio" [value]="'material'" (click)="changeTheme('material')">
             <i class="bi bi-moon"></i>
           </label>
