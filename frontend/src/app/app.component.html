@@ -28,7 +28,15 @@
           Download
         </button>
       </li>
+
+      <li class="nav-item">
+        <button class="btn btn-secondary m-1"
+                (click)="openDocs()">
+          Docs
+        </button>
+      </li>
     </ul>
+
     <ul class="nav justify-content-end" style="margin-right: 10px">
       <li class="nav-item mr-md-3">
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentCodemirrorTheme">

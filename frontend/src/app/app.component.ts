@@ -160,4 +160,8 @@ export class AppComponent implements OnInit {
   changeTheme(theme: string) {
     this.codemirrorOptions.theme = theme;
   }
+
+  openDocs() {
+    window.open('https://fujaba.github.io/fulibWorkflows/', '_blank')
+  }
 }
