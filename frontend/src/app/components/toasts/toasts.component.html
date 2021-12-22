@@ -1,4 +1,5 @@
 <ngb-toast *ngFor="let toast of toastService.toasts"
+           style="background: transparent"
            [header]="toast.header" [autohide]="true" [delay]="toast.delay || 5000"
            (hidden)="toastService.remove(toast)">
   <div [class]="toast.classname">
