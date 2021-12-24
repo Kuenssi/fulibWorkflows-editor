@@ -38,6 +38,7 @@ export class AppComponent implements OnInit {
   private ajv!: Ajv;
   private validate!: any;
   private yamlHelper!: YamlHelper;
+  private loading: boolean = false;
 
   constructor(private fulibWorkflowsService: FulibWorkflowsService,
               public toastService: ToastService,
@@ -109,11 +110,15 @@ export class AppComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
+
     this.fulibWorkflowsService.generate(this.content).subscribe(
       (answer: GenerateResult) => {
         const pages = createMapFromAnswer(answer.pages, answer.numberOfPages);
         const diagrams = createMapFromAnswer(answer.diagrams, answer.numberOfDiagrams);
         const fxmls = createMapFromAnswer(answer.fxmls, answer.numberOfFxmls);
+
+        this.loading = false;
 
         this.generateResult = {
           board: answer.board,
@@ -127,6 +132,11 @@ export class AppComponent implements OnInit {
         };
       }
     );
+  }
+
+
+  isLoading(): boolean {
+    return this.loading;
   }
 
   setIndexFromIframe(index: number) {
