@@ -21,4 +21,34 @@ export const pagesExample =
   '    - name: Overview\n' +
   '    - text: Your current Purchases\n' +
   '    - button: Add Purchase\n' +
+  '    - button: Logout\n' +
+  '\n' +
+  '- page:\n' +
+  '\t\t- name: AddPurchase\n' +
+  '    - text: New Purchase\n' +
+  '    - input: Item\n' +
+  '    - input: Amount\n' +
+  '    - button: Buy\n' +
+  '\n' +
+  '- page:\n' +
+  '    - name: Overview\n' +
+  '    - text: Your current Purchases\n' +
+  '    - text: T-Shirt x5\n' +
+  '    - button: Add Purchase\n' +
+  '    - button: Logout\n' +
+  '\n' +
+  '- page:\n' +
+  '\t\t- name: AddPurchase\n' +
+  '    - text: New Purchase\n' +
+  '    - input: Item\n' +
+  '    - input: Amount\n' +
+  '    - button: Buy\n' +
+  '\n' +
+  '- page:\n' +
+  '    - name: Overview\n' +
+  '    - text: Your current Purchases\n' +
+  '    - text: T-Shirt x5\n' +
+  '    - text: Red Socks x10\n' +
+  '    - button: Add Purchase\n' +
+  '    - button: Logout\n'+
   '\n';

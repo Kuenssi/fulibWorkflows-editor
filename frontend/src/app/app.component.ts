@@ -9,7 +9,7 @@ import {GenerateResult} from './core/model/GenerateResult';
 import {createMapFromAnswer} from './core/helper/map.helper';
 import {workflowsSchema} from './core/helper/workflows.schema';
 import {FulibWorkflowsService} from './core/services/fulibWorkflows.service';
-import {allNotesExample, msExample, newWorkflowExample, pagesExample, pmExample} from './core/examples';
+import {msExample, newWorkflowExample, pagesExample, pmExample} from './core/examples';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   public version!: string;
 
   public currentExampleDesc: string = 'Select example';
-  public examplesList = ['Empty workflow', 'All Notes', 'Data Modelling', 'Microservices', 'Pages'];
+  public examplesList = ['Empty workflow', 'Data Modelling', 'Microservices', 'Pages'];
 
   public showIframeHider = false;
   public newPageIndex!: number;
@@ -80,15 +80,12 @@ export class AppComponent implements OnInit {
         newContent = newWorkflowExample;
         break;
       case 1:
-        newContent = allNotesExample;
-        break;
-      case 2:
         newContent = pmExample;
         break;
-      case 3:
+      case 2:
         newContent = msExample;
         break;
-      case 4:
+      case 3:
         newContent = pagesExample;
         break;
       default:
