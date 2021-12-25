@@ -107,12 +107,12 @@ export const workflowsSchema =
                   {
                     "type": "object",
                     "properties": {
-                      "name": {
+                      "pageName": {
                         "type": "string"
                       }
                     },
                     "required": [
-                      "name"
+                      "pageName"
                     ],
                     "additionalProperties": false
                   },

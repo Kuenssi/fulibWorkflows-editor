@@ -2,7 +2,7 @@ export const pagesExample =
   '- workflow: Pages\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Register\n' +
+  '    - pageName: Register\n' +
   '    - text: Please register yourself\n' +
   '    - input: E-Mail\n' +
   '    - input: Username\n' +
@@ -11,41 +11,41 @@ export const pagesExample =
   '    - button: Register\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Login\n' +
+  '    - pageName: Login\n' +
   '    - text: Welcome back\n' +
   '    - input: Username/E-Mail\n' +
   '    - password: Password\n' +
   '    - button: Login\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Overview\n' +
+  '    - pageName: Overview\n' +
   '    - text: Your current Purchases\n' +
   '    - button: Add Purchase\n' +
   '    - button: Logout\n' +
   '\n' +
   '- page:\n' +
-  '\t\t- name: AddPurchase\n' +
+  '\t\t- pageName: AddPurchase\n' +
   '    - text: New Purchase\n' +
   '    - input: Item\n' +
   '    - input: Amount\n' +
   '    - button: Buy\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Overview\n' +
+  '    - pageName: Overview\n' +
   '    - text: Your current Purchases\n' +
   '    - text: T-Shirt x5\n' +
   '    - button: Add Purchase\n' +
   '    - button: Logout\n' +
   '\n' +
   '- page:\n' +
-  '\t\t- name: AddPurchase\n' +
+  '\t\t- pageName: AddPurchase\n' +
   '    - text: New Purchase\n' +
   '    - input: Item\n' +
   '    - input: Amount\n' +
   '    - button: Buy\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Overview\n' +
+  '    - pageName: Overview\n' +
   '    - text: Your current Purchases\n' +
   '    - text: T-Shirt x5\n' +
   '    - text: Red Socks x10\n' +

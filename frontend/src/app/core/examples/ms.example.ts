@@ -4,21 +4,21 @@ export const msExample =
   '- user: Peter Picker\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse overview\n' +
+  '    - pageName: Warehouse overview\n' +
   '    - text: Warehouse Home\n' +
   '    - button: Store Tasks\n' +
   '    - button: Pick Tasks\n' +
   '\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse store tasks\n' +
+  '    - pageName: Warehouse store tasks\n' +
   '    - text: Warehouse palettes\n' +
   '    - button: add\n' +
   '    - text: empty\n' +
   '\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse add palette\n' +
+  '    - pageName: Warehouse add palette\n' +
   '    - text: Store new palette\n' +
   '    - input: barcode\n' +
   '    - input: product\n' +
@@ -53,13 +53,13 @@ export const msExample =
   '  state: in stock\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse store tasks\n' +
+  '    - pageName: Warehouse store tasks\n' +
   '    - text: Warehouse palettes\n' +
   '    - button: add\n' +
   '    - text: b001, 10 red_shoes, shelf_42\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse add palette\n' +
+  '    - pageName: Warehouse add palette\n' +
   '    - text: Store new palette\n' +
   '    - input: barcode\n' +
   '    - input: product\n' +
@@ -92,14 +92,14 @@ export const msExample =
   '  state: in stock\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse overview\n' +
+  '    - pageName: Warehouse overview\n' +
   '    - text: Warehouse palettes\n' +
   '    - button: add\n' +
   '    - text: b002, red_shoes, shelf_23\n' +
   '    - text: b001, red_shoes, shelf_42\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse add palette\n' +
+  '    - pageName: Warehouse add palette\n' +
   '    - text: Store new palette\n' +
   '    - input: barcode\n' +
   '    - input: product\n' +
@@ -132,7 +132,7 @@ export const msExample =
   '  amount: 6\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse overview\n' +
+  '    - pageName: Warehouse overview\n' +
   '    - text: Warehouse palettes\n' +
   '    - button: add\n' +
   '    - text: b003, blue_jeans, shelf_1337\n' +
@@ -142,13 +142,13 @@ export const msExample =
   '- user: Sabine Sales\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop offers\n' +
+  '    - pageName: MicroShop offers\n' +
   '    - text: Offers overview\n' +
   '    - button: add\n' +
   '    - text: no offers yet\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop add offer\n' +
+  '    - pageName: MicroShop add offer\n' +
   '    - text: make new offer\n' +
   '    - input: product\n' +
   '    - input: price\n' +
@@ -165,13 +165,13 @@ export const msExample =
   '  price: 42\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop offers\n' +
+  '    - pageName: MicroShop offers\n' +
   '    - text: Offers overview\n' +
   '    - button: add\n' +
   '    - text: red_shoes, 42\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop add offer\n' +
+  '    - pageName: MicroShop add offer\n' +
   '    - text: make new offer\n' +
   '    - input: product\n' +
   '    - input: price\n' +
@@ -188,7 +188,7 @@ export const msExample =
   '  price: 63\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop offers\n' +
+  '    - pageName: MicroShop offers\n' +
   '    - text: Offers overview\n' +
   '    - button: add\n' +
   '    - text: red_shoes, 42\n' +
@@ -198,7 +198,7 @@ export const msExample =
   '- user: Carli_Customer\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop offers\n' +
+  '    - pageName: MicroShop offers\n' +
   '    - text: Welcome to our micro shop\n' +
   '    - text: We have\n' +
   '    - text: red_shoes for 42\n' +
@@ -206,7 +206,7 @@ export const msExample =
   '    - button: order\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop buy\n' +
+  '    - pageName: MicroShop buy\n' +
   '    - text: Welcome to our micro shop\n' +
   '    - input: product\n' +
   '    - input: customer\n' +
@@ -260,7 +260,7 @@ export const msExample =
   '\n' +
   '\n' +
   '- page:\n' +
-  '    - name: MicroShop Carli overview\n' +
+  '    - pageName: MicroShop Carli overview\n' +
   '    - text: Welcome Carli\n' +
   '    - text: Your orders are\n' +
   '    - text: red_shoes for 42, picking\n' +
@@ -270,12 +270,12 @@ export const msExample =
   '- user: Peter Picker\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse pick tasks\n' +
+  '    - pageName: Warehouse pick tasks\n' +
   '    - text: Pick tasks overview\n' +
   '    - button: pt_o0925_1, red_shoes, shelf_42, shelf_23\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse pick one\n' +
+  '    - pageName: Warehouse pick one\n' +
   '    - text: Pick one\n' +
   '    - input: task\n' +
   '    - input: shelf\n' +
@@ -308,7 +308,7 @@ export const msExample =
   '  state: shipping\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse pick tasks\n' +
+  '    - pageName: Warehouse pick tasks\n' +
   '    - text: Pick tasks overview\n' +
   '    - text: no tasks, have a break\n' +
   '\n' +
@@ -316,12 +316,12 @@ export const msExample =
   '- user: Dora Delivery\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse delivery tasks\n' +
+  '    - pageName: Warehouse delivery tasks\n' +
   '    - text: Delivery tasks overview\n' +
   '    - button: red_shoes, Wonderland 1\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse deliver\n' +
+  '    - pageName: Warehouse deliver\n' +
   '    - text: Delivering\n' +
   '    - input: order\n' +
   '    - button: done\n' +
@@ -336,7 +336,7 @@ export const msExample =
   '  order: o0925_1\n' +
   '\n' +
   '- page:\n' +
-  '    - name: Warehouse delivery tasks\n' +
+  '    - pageName: Warehouse delivery tasks\n' +
   '    - text: Delivery tasks overview\n' +
   '    - text: everything delivered, you are a hero\n' +
   '\n' +
