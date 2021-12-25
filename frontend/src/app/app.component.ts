@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
 
     if (!validYaml) {
       const errorMessage = this.evaluateErrorMessage();
-      this.toastService.show(errorMessage, {classname: 'card bg-danger text-light', delay: 20000, type: 'error'});
+      this.toastService.show(errorMessage, {classname: 'card bg-danger text-light', delay: 20000, header: 'Lint Error'});
       return;
     }
 
@@ -160,7 +160,7 @@ export class AppComponent implements OnInit {
 
   showToast(toastContent: string) {
     this.zone.run(() => {
-      this.toastService.show(toastContent, {classname: 'card bg-success text-light', type: 'success'});
+      this.toastService.show(toastContent, {classname: 'card bg-success text-light', header: 'Page Action'});
     });
   }
 
