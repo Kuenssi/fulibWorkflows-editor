@@ -103,7 +103,11 @@ export class AppComponent implements OnInit {
 
     if (!validYaml) {
       const errorMessage = this.evaluateErrorMessage();
-      this.toastService.show(errorMessage, {classname: 'card bg-danger text-light', delay: 20000, header: 'Lint Error'});
+      this.toastService.show(errorMessage, {
+        classname: 'card bg-danger text-light',
+        delay: 20000,
+        header: 'Lint Error'
+      });
       return;
     }
 
@@ -127,6 +131,18 @@ export class AppComponent implements OnInit {
           numberOfFxmls: answer.numberOfFxmls,
           classDiagram: answer.classDiagram,
         };
+      },
+      (error: any) => {
+        this.loading = false;
+
+        let errorMessage = error.error.status + '\n';
+        errorMessage += error.error.message;
+
+        this.toastService.show(errorMessage, {
+          classname: 'card bg-danger text-light',
+          delay: 20000,
+          header: 'Parse Error'
+        });
       }
     );
   }
