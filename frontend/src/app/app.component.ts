@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
     this.ajv = new Ajv();
     this.validate = this.ajv.compile(workflowsSchema);
     this.yamlHelper = new YamlHelper(this.ajv, this.validate);
+    this.content = '- workflow: '
   }
 
   changeExampleContent(index: number) {
