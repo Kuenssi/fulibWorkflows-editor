@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
-import {ExportOptions} from '../model/ExportOptions';
 
 @Injectable()
 export class HttpService {

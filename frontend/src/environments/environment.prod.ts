@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
 
-  version: '0.1.6',
+  version: '0.1.7',
 
   backendUrl: 'https://workflows-editor-backend.herokuapp.com/',
 
