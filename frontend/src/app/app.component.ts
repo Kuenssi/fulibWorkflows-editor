@@ -99,6 +99,8 @@ export class AppComponent implements OnInit {
   }
 
   generate() {
+    if (this.isLoading()) return;
+
     if (!this.content.includes('- workflow: ')) {
       this.toastService.show('Needs at least one workflow note (best at the beginning)', {
         classname: 'card bg-danger text-light',
