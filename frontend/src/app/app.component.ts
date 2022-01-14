@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
 
     // https://stackoverflow.com/questions/41616112/calling-components-function-from-iframe
     (<any>window).setIndexFromIframe = this.setIndexFromIframe.bind(this);
-    (<any>window).showToast = this.showToast.bind(this);
+    (<any>window).changeFrameWithToast = this.changeFrameWithToast.bind(this);
   }
 
   ngOnInit() {
@@ -162,10 +162,12 @@ export class AppComponent implements OnInit {
     return this.loading;
   }
 
-  setIndexFromIframe(index: number) {
+  setIndexFromIframe(index: number, diagramType: 'pages' | 'objects' | 'class') {
     // It needs to be run in the NgZone because only then angular change detection gets a grip on the change
-    this.zone.run(() =>
-      this.newPageIndex = index + 1); // +1 because map is 1 based and the generated fulibWorkflows is 0 based right now
+    this.zone.run(() => {
+      this.newPageIndex = index + 1; // +1 because map is 1 based and the generated fulibWorkflows is 0 based right now
+      this.currentDisplay = diagramType;
+    });
   }
 
   // Source: https://github.com/angular-split/angular-split/blob/main/src/app/examples/iframes/iframes.component.ts
@@ -184,9 +186,10 @@ export class AppComponent implements OnInit {
     this.split.notify('end', gutterNum)
   }
 
-  showToast(toastContent: string) {
+  changeFrameWithToast(toastContent: string, index: number) {
     this.zone.run(() => {
       this.toastService.show(toastContent, {classname: 'card bg-success text-light', header: 'Page Action'});
+      this.setIndexFromIframe(index, 'pages');
     });
   }
 
