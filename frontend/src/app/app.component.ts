@@ -100,6 +100,15 @@ export class AppComponent implements OnInit {
   }
 
   generate() {
+    if (!this.content.includes('- workflow: ')) {
+      this.toastService.show('Needs at least one workflow note (best at the beginning)', {
+        classname: 'card bg-danger text-light',
+        delay: 20000,
+        header: 'Lint Error'
+      });
+      return;
+    }
+
     const validYaml = this.yamlHelper.lintYamlString(this.content);
 
     if (!validYaml) {
@@ -147,7 +156,6 @@ export class AppComponent implements OnInit {
       }
     );
   }
-
 
   isLoading(): boolean {
     return this.loading;
