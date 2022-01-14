@@ -1,6 +1,5 @@
 export const environment = {
   production: false,
-
   version: '0.1.8-dev',
 
   backendUrl: 'http://localhost:8080/',
