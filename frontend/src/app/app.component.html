@@ -22,7 +22,7 @@
       <li class="nav-item dropdown">
         <div ngbDropdown class="m-1">
           <button class="btn btn-primary" id="exampleSelection"
-                  ngbDropdownToggle>{{currentExampleDesc}}</button>
+                  ngbDropdownToggle [disabled]="isLoading()">{{currentExampleDesc}}</button>
           <div ngbDropdownMenu aria-labelledby="exampleSelection">
             <ng-container *ngFor="let example of examplesList; index as i">
               <button ngbDropdownItem (click)="changeExampleContent(i)">{{example}}</button>
