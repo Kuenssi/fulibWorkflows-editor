@@ -68,7 +68,8 @@ export class AppComponent implements OnInit {
     this.ajv = new Ajv();
     this.validate = this.ajv.compile(workflowsSchema);
     this.yamlHelper = new YamlHelper(this.ajv, this.validate);
-    this.content = '- workflow: '
+    this.content = newWorkflowExample;
+    this.generate();
   }
 
   changeExampleContent(index: number) {
@@ -94,9 +95,7 @@ export class AppComponent implements OnInit {
         this.toastService.show('Unknown Example. Using new workflow template', {classname: 'bg-warning'});
     }
     this.content = newContent;
-    if (this.currentExampleDesc !== 'Empty workflow') {
-      this.generate();
-    }
+    this.generate();
   }
 
   generate() {

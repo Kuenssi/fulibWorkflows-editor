@@ -10,8 +10,8 @@ import {GenerateResult} from '../../core/model/GenerateResult';
 export class MockupViewerComponent {
   @Input() generateResult!: GenerateResult;
   @Input() index!: number | undefined;
-  @Input() currentDisplay!: 'pages' | 'objects' | 'class';
 
+  public currentDisplay: 'pages' | 'objects' | 'class' = 'pages';
   public currentIndex = 1;
   private maxIndex!: number;
 

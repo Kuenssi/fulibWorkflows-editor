@@ -4,6 +4,21 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item m-1">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentCodemirrorTheme">
+          <label ngbButtonLabel class="btn btn-light"
+                 placement="bottom" ngbTooltip="CM Light">
+            <input ngbButton type="radio" [value]="'idea'" (click)="changeTheme('idea')">
+            <i class="bi bi-sun"></i>
+          </label>
+          <label ngbButtonLabel class="btn btn-dark"
+                 placement="bottom" ngbTooltip="CM Dark">
+            <input ngbButton type="radio" [value]="'material'" (click)="changeTheme('material')">
+            <i class="bi bi-moon"></i>
+          </label>
+        </div>
+      </li>
+
       <li class="nav-item dropdown">
         <div ngbDropdown class="m-1">
           <button class="btn btn-primary" id="exampleSelection"
@@ -44,37 +59,6 @@
       </li>
     </ul>
 
-    <ul class="nav justify-content-end" style="margin-right: 10px">
-      <li class="nav-item mr-md-3">
-        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentCodemirrorTheme">
-          <label ngbButtonLabel class="btn btn-light"
-                 placement="bottom" ngbTooltip="CM Light">
-            <input ngbButton type="radio" [value]="'idea'" (click)="changeTheme('idea')">
-            <i class="bi bi-sun"></i>
-          </label>
-          <label ngbButtonLabel class="btn btn-dark"
-                 placement="bottom" ngbTooltip="CM Dark">
-            <input ngbButton type="radio" [value]="'material'" (click)="changeTheme('material')">
-            <i class="bi bi-moon"></i>
-          </label>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentDisplay">
-          <label ngbButtonLabel class="btn btn-info">
-            <input ngbButton type="radio" [value]="'pages'"> Pages
-          </label>
-          <label ngbButtonLabel class="btn btn-info">
-            <input ngbButton type="radio" [value]="'objects'"> Objects
-          </label>
-          <label ngbButtonLabel class="btn btn-info">
-            <input ngbButton type="radio" [value]="'class'"> Class
-          </label>
-        </div>
-      </li>
-    </ul>
-
     <span class="navbar-text">v{{version}}</span>
   </div>
 </nav>
@@ -112,8 +96,7 @@
         <as-split-area [size]="65">
           <div class="h-100" style="background-color: white">
             <app-mockup-viewer [generateResult]="generateResult"
-                               [index]="newPageIndex"
-                               [currentDisplay]="currentDisplay"></app-mockup-viewer>
+                               [index]="newPageIndex"></app-mockup-viewer>
             <div [hidden]="showIframeHider === false" class="hack-iframe-hider"></div>
           </div>
         </as-split-area>

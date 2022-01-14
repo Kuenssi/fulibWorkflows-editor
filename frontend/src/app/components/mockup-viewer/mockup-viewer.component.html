@@ -1,26 +1,41 @@
 <div class="h-100" style="background-color: white">
-  <div>
-    <div *ngIf="currentDisplay !== 'class'" class="d-grid d-md-block">
+  <div class="row">
+    <div class="col align-self-start">
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="setFirst()">
-        <span *ngIf="currentDisplay === 'pages'">First Page</span>
-        <span *ngIf="currentDisplay === 'objects'">First Diagram</span>
+              (click)="setFirst()"
+              [disabled]="currentDisplay === 'class'">
+        First
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="previous()">
-        <span *ngIf="currentDisplay === 'pages'">Previous Page</span>
-        <span *ngIf="currentDisplay === 'objects'">Previous Diagram</span>
+              (click)="previous()"
+              [disabled]="currentDisplay === 'class'">
+        Previous
+
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="next()">
-        <span *ngIf="currentDisplay === 'pages'">Next Page</span>
-        <span *ngIf="currentDisplay === 'objects'">Next Diagram</span>
+              (click)="next()"
+              [disabled]="currentDisplay === 'class'">
+        Next
       </button>
       <button type="button" class="btn btn-secondary btn-sm m-1"
-              (click)="setLast()">
-        <span *ngIf="currentDisplay === 'pages'">Last Page</span>
-        <span *ngIf="currentDisplay === 'objects'">Last Diagram</span>
+              (click)="setLast()"
+              [disabled]="currentDisplay === 'class'">
+        Last
       </button>
+    </div>
+
+    <div class="mr-3">
+      <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="currentDisplay">
+        <label ngbButtonLabel class="btn btn-info btn-sm mt-1 mb-1">
+          <input ngbButton type="radio" [value]="'pages'"> Pages
+        </label>
+        <label ngbButtonLabel class="btn btn-info btn-sm mt-1 mb-1">
+          <input ngbButton type="radio" [value]="'objects'"> Objects
+        </label>
+        <label ngbButtonLabel class="btn btn-info btn-sm mt-1 mb-1">
+          <input ngbButton type="radio" [value]="'class'"> Class
+        </label>
+      </div>
     </div>
   </div>
 
