@@ -9,6 +9,7 @@ export const pagesExample =
   '    - password: Password\n' +
   '    - password: Repeat Password\n' +
   '    - button: Register\n' +
+  '      targetPage: Login\n' +
   '\n' +
   '- page:\n' +
   '    - pageName: Login\n' +
@@ -16,39 +17,53 @@ export const pagesExample =
   '    - input: Username/E-Mail\n' +
   '    - password: Password\n' +
   '    - button: Login\n' +
+  '      targetPage: Overview1\n' +
   '\n' +
   '- page:\n' +
-  '    - pageName: Overview\n' +
+  '    - pageName: Overview1\n' +
   '    - text: Your current Purchases\n' +
   '    - button: Add Purchase\n' +
+  '      targetPage: AddPurchase1\n' +
   '    - button: Logout\n' +
+  '      targetPage: Logout\n' +
   '\n' +
   '- page:\n' +
-  '\t\t- pageName: AddPurchase\n' +
+  '\t\t- pageName: AddPurchase1\n' +
   '    - text: New Purchase\n' +
   '    - input: Item\n' +
   '    - input: Amount\n' +
   '    - button: Buy\n' +
+  '      targetPage: Overview2\n' +
   '\n' +
   '- page:\n' +
-  '    - pageName: Overview\n' +
+  '    - pageName: Overview2\n' +
   '    - text: Your current Purchases\n' +
   '    - text: T-Shirt x5\n' +
   '    - button: Add Purchase\n' +
+  '      targetPage: AddPurchase2\n' +
   '    - button: Logout\n' +
+  '      targetPage: Logout\n' +
   '\n' +
   '- page:\n' +
-  '\t\t- pageName: AddPurchase\n' +
+  '\t\t- pageName: AddPurchase2\n' +
   '    - text: New Purchase\n' +
   '    - input: Item\n' +
   '    - input: Amount\n' +
   '    - button: Buy\n' +
+  '      targetPage: Overview3\n' +
   '\n' +
   '- page:\n' +
-  '    - pageName: Overview\n' +
+  '    - pageName: Overview3\n' +
   '    - text: Your current Purchases\n' +
   '    - text: T-Shirt x5\n' +
   '    - text: Red Socks x10\n' +
   '    - button: Add Purchase\n' +
-  '    - button: Logout\n'+
+  '    - button: Logout\n' +
+  '      targetPage: Logout\n' +
+  '\n' +
+  '- page:\n' +
+  '\t\t- pageName: Logout\n' +
+  '    - text: See you soon\n' +
+  '    - button: Back to login\n' +
+  '      targetPage: Login\n' +
   '\n';
