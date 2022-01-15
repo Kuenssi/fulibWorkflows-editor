@@ -96,7 +96,8 @@
         <as-split-area [size]="65">
           <div class="h-100" style="background-color: white">
             <app-mockup-viewer [generateResult]="generateResult"
-                               [index]="newPageIndex"></app-mockup-viewer>
+                               [index]="newPageIndex"
+                               [currentDisplay]="currentDisplay"></app-mockup-viewer>
             <div [hidden]="showIframeHider === false" class="hack-iframe-hider"></div>
           </div>
         </as-split-area>

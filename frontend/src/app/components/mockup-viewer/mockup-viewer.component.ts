@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 
 import {GenerateResult} from '../../core/model/GenerateResult';
 
@@ -10,8 +10,8 @@ import {GenerateResult} from '../../core/model/GenerateResult';
 export class MockupViewerComponent {
   @Input() generateResult!: GenerateResult;
   @Input() index!: number | undefined;
+  @Input() currentDisplay!: 'pages' | 'objects' | 'class';
 
-  public currentDisplay: 'pages' | 'objects' | 'class' = 'pages';
   public currentIndex = 1;
   private maxIndex!: number;
 

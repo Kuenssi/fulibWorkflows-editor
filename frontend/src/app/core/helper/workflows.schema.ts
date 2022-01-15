@@ -133,6 +133,9 @@ export const workflowsSchema =
                     "properties": {
                       "button": {
                         "type": "string"
+                      },
+                      "targetPage": {
+                        "type": "string"
                       }
                     },
                     "required": [
@@ -145,6 +148,9 @@ export const workflowsSchema =
                     "properties": {
                       "input": {
                         "type": "string"
+                      },
+                      "fill": {
+                        "type": "string"
                       }
                     },
                     "required": [
@@ -156,6 +162,9 @@ export const workflowsSchema =
                     "type": "object",
                     "properties": {
                       "password": {
+                        "type": "string"
+                      },
+                      "fill": {
                         "type": "string"
                       }
                     },

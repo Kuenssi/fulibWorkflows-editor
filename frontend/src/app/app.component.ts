@@ -187,9 +187,9 @@ export class AppComponent implements OnInit {
   }
 
   changeFrameWithToast(toastContent: string, index: number) {
+    this.setIndexFromIframe(index, 'pages');
     this.zone.run(() => {
       this.toastService.show(toastContent, {classname: 'card bg-success text-light', header: 'Page Action'});
-      this.setIndexFromIframe(index, 'pages');
     });
   }
 
