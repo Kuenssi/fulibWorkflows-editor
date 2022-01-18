@@ -22,5 +22,15 @@ From all `data` events one classdiagram gets created.
 https://workflows-editor-frontend.herokuapp.com/
 
 ------------------
+#### Local Development
+Frontend(Angular):
+Run the `npm run start:dev` command in the frontend directory.
+
+Backend(Spring Boot):
+Run BackendApplication.main
+
+For use in Intellij -> There exists a `LaunchApplication` Run configuration which can be used to launch Frontend and Backend.
+
+------------------
 ### fulibWorkflows
 For more information about the fulibWorkflows yaml syntax check out the documentation on [fulibWorkflows](https://github.com/fujaba/fulibWorkflows#usage)
