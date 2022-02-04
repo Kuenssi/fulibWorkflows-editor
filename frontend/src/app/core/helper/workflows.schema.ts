@@ -150,7 +150,7 @@ export const workflowsSchema =
                         "type": "string"
                       },
                       "fill": {
-                        "type": "string"
+                        "type": ["string", "integer"]
                       }
                     },
                     "required": [
@@ -165,7 +165,7 @@ export const workflowsSchema =
                         "type": "string"
                       },
                       "fill": {
-                        "type": "string"
+                        "type": ["string", "integer"]
                       }
                     },
                     "required": [
