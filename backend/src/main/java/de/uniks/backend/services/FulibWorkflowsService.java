@@ -19,7 +19,7 @@ public class FulibWorkflowsService {
     Logger logger = LoggerFactory.getLogger(FulibWorkflowsService.class);
 
     public String generate(String yamlData) {
-        GenerateResult generateResult = generateFromYaml(yamlData);
+        GenerateResult generateResult = generateFromYaml(yamlData, true);
 
         String answer = "";
 
@@ -35,7 +35,7 @@ public class FulibWorkflowsService {
 
 
     public byte[] createZip(String yamlData, Map<String, String> queryParams) {
-        GenerateResult generateResult = generateFromYaml(yamlData);
+        GenerateResult generateResult = generateFromYaml(yamlData, false);
 
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
             ZipOutputStream zipOutputStream = new ZipOutputStream(byteArrayOutputStream);
@@ -110,9 +110,10 @@ public class FulibWorkflowsService {
     }
 
 
-    private GenerateResult generateFromYaml(String yamlData) {
+    private GenerateResult generateFromYaml(String yamlData, boolean webGeneration) {
         GenerateResult generateResult = new GenerateResult();
         BoardGenerator boardGenerator = new BoardGenerator();
+        boardGenerator.setWebGeneration(webGeneration);
 
         Map<String, String> htmls = boardGenerator.generateAndReturnHTMLsFromString(yamlData);
 
