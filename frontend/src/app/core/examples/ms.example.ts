@@ -32,7 +32,7 @@ export const msExample =
   '- data: Palette p1\n' +
   '  barcode: b001\n' +
   '  product: red_shoes\n' +
-  '  product.back: [palettes]\n' +
+  '  product.back: "[palettes]"\n' +
   '  amount: 10\n' +
   '  location: shelf_42\n' +
   '\n' +
@@ -218,9 +218,9 @@ export const msExample =
   '- data: Order o1\n' +
   '  code: o0925_1\n' +
   '  product: red_shoes\n' +
-  '  product.back: [orders]\n' +
+  '  product.back: "[orders]"\n' +
   '  customer: Carli_Customer\n' +
-  '  customer.back: [orders]\n' +
+  '  customer.back: "[orders]"\n' +
   '  address: Wonderland 1\n' +
   '  state: new order\n' +
   '\n' +
@@ -242,8 +242,8 @@ export const msExample =
   '- data: PickTask pt1\n' +
   '  code: pt_o0925_1\n' +
   '  product: red_shoes\n' +
-  '  product.back: [pickTasks]\n' +
-  '  shelf: [shelf_42, shelf_23]\n' +
+  '  product.back: "[pickTasks]"\n' +
+  '  shelf: "[shelf_42, shelf_23]"\n' +
   '  customer: Carli_Customer\n' +
   '  address: Wonderland 1\n' +
   '  state: picking\n' +
@@ -287,7 +287,7 @@ export const msExample =
   '  code: pt_o0925_1\n' +
   '  from: shelf_42\n' +
   '  palette: b001\n' +
-  '  palette.back: [pickTasks]\n' +
+  '  palette.back: "[pickTasks]"\n' +
   '  state: shipping\n' +
   '\n' +
   '- data: Palette p5\n' +
