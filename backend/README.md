@@ -1,7 +1,7 @@
 # fulibWorkflows-editor backend
 
 ## How to deploy to heroku
-- Build Jar
+- Build Project to get newest Jar
 - Start docker on your machine
 - Open terminal
 - go to fulibWorkflows-editor\backend
