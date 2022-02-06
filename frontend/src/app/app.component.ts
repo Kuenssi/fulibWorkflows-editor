@@ -110,6 +110,9 @@ export class AppComponent implements OnInit {
       return;
     }
 
+    // Replace tabs with two spaces for js-yaml and snakeyaml parser
+    this.content = this.content.replace(/\t/g, '  ');
+
     const validYaml = this.yamlHelper.lintYamlString(this.content);
 
     if (!validYaml) {
