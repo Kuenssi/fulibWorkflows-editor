@@ -149,7 +149,7 @@ export const workflowsSchema =
                       "input": {
                         "type": "string"
                       },
-                      "fill": {
+                      "value": {
                         "type": ["string", "integer"]
                       }
                     },
@@ -164,7 +164,7 @@ export const workflowsSchema =
                       "password": {
                         "type": "string"
                       },
-                      "fill": {
+                      "value": {
                         "type": ["string", "integer"]
                       }
                     },
