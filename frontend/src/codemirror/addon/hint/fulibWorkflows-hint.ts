@@ -1,7 +1,7 @@
 import * as CodeMirror from 'codemirror';
 
 const noteKeywords = ['workflow', 'externalSystem', 'service', 'command', 'event', 'policy', 'user', 'data', 'page', 'problem'];
-const pageKeywords = ['pageName', 'text', 'input', 'password', 'button', 'fill', 'targetPage']
+const pageKeywords = ['pageName', 'text', 'input', 'password', 'button', 'value', 'targetPage']
 
 // @ts-ignore
 CodeMirror.registerHelper('hint', 'fulibWorkflows', (cm) => {
